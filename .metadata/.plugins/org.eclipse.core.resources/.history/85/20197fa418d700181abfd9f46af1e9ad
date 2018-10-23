@@ -1,0 +1,18 @@
+package mquevedojbravo;
+
+import processing.core.PApplet;
+
+public class Logica {
+
+	private PApplet app;
+	private Mundo m;
+	
+	public Logica(PApplet app) {
+		this.app = app;
+		m = new Mundo(app);
+	}
+	
+	public void pintar() {
+		m.pintar();
+	}
+}

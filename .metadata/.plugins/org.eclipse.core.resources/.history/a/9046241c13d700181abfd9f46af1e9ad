@@ -1,0 +1,23 @@
+package mquevedojbravo;
+
+import processing.core.PApplet;
+
+public class Ovni extends Personaje implements Runnable {
+
+	private PApplet app;
+	private Mundo m; 
+	
+	public Ovni(PApplet app, Mundo m) {
+		super(app);
+		this.m = m;
+		
+	}
+
+	public void run() {
+
+	}
+	
+	public void pintar() {
+		
+	}
+}

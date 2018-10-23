@@ -1,0 +1,5 @@
+package mquevedojbravo;
+
+public class Recogible extends Thread {
+
+}

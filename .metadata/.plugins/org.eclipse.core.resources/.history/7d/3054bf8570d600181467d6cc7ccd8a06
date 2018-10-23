@@ -1,0 +1,82 @@
+package mquevedojbravo;
+
+import java.util.ArrayList;
+
+import processing.core.PApplet;
+import processing.core.PImage;
+import processing.core.PVector;
+
+public class Jugador {
+
+	private PApplet app;
+	private PVector pos;
+	private PVector vel;
+	private PVector ac;
+	private float fmax;
+	private float velmax;
+	private PImage nave;
+	private ArrayList<PVector> historia;
+	
+	public Jugador(PApplet app) {
+		this.app = app;
+		nave = app.loadImage("nave.png");
+		ac = new PVector(0, 0);
+		vel = new PVector(0, 0);
+		pos = new PVector(app.width/2, app.height/2);
+		velmax = 6f;
+		fmax = 0.1f;
+		historia = new ArrayList<PVector>();
+		historia.add(pos);
+	}
+	
+	public void pintar() {
+		float ang = vel.heading() + app.PI/2;
+		app.pushMatrix();
+		for(int i = 0; i < historia.size(); i++) {
+			PVector p = historia.get(i);
+			int tam = 10 + (int)(i/5);
+			int opacidad = 150+(i*2);
+			app.fill(0, 193, 208, opacidad);
+			app.ellipse(p.x, p.y, tam, tam);
+		}
+		app.translate(pos.x, pos.y);
+		app.rotate(ang);
+		app.image(nave, 0, 0);
+		app.popMatrix();
+		actualizar();
+		PVector obj = new PVector(app.mouseX, app.mouseY);
+		perseguir(obj);
+	}
+
+	public void validar() {
+		
+	}
+	
+	public void actualizar() {
+		
+		historia.add(pos);
+		if(historia.size() > 50) {
+			historia.remove(0);
+		}
+		
+		vel.add(ac);
+		vel.limit(velmax);
+		pos.add(vel);
+		ac.mult(0);
+	}
+	
+	public void aplicarFuerza(PVector f) {
+		ac.add(f);
+	}
+	
+	public void perseguir(PVector obj) {
+		PVector deseado = PVector.sub(obj, pos);
+		deseado.normalize();
+		deseado.mult(velmax);
+		PVector direccion = PVector.sub(deseado, vel);
+		direccion.limit(fmax);
+		aplicarFuerza(direccion);
+	}
+	
+	
+}

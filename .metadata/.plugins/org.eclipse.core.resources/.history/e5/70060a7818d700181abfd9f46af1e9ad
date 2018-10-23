@@ -1,0 +1,17 @@
+package mquevedojbravo;
+
+public class Cometa extends Recogible {
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void pintar() {
+		// TODO Auto-generated method stub
+
+	}
+
+}

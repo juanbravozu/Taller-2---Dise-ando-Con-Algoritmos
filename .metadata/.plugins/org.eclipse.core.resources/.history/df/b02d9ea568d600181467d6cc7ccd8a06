@@ -1,0 +1,64 @@
+package mquevedojbravo;
+
+import processing.core.PApplet;
+import processing.core.PImage;
+import processing.core.PVector;
+
+public class Jugador {
+
+	private PApplet app;
+	private PVector pos;
+	private PVector vel;
+	private PVector ac;
+	private float fmax;
+	private float velmax;
+	private PImage nave;
+	
+	public Jugador(PApplet app) {
+		this.app = app;
+		nave = app.loadImage("nave.png");
+		ac = new PVector(0, 0);
+		vel = new PVector(0, 0);
+		pos = new PVector(app.width/2, app.height/2);
+		velmax = 4;
+		fmax = 0.1f;
+	}
+	
+	public void pintar() {
+		float ang = vel.heading() + app.PI/2;
+		app.pushMatrix();
+		app.translate(pos.x, pos.y);
+		app.rotate(ang);
+		app.image(nave, 0, 0);
+		app.popMatrix();
+		actualizar();
+		PVector obj = new PVector(app.mouseX, app.mouseY);
+		perseguir(obj);
+	}
+
+	public void validar() {
+		
+	}
+	
+	public void actualizar() {
+		vel.add(ac);
+		vel.limit(velmax);
+		pos.add(vel);
+		ac.mult(0);
+	}
+	
+	public void aplicarFuerza(PVector f) {
+		ac.add(f);
+	}
+	
+	public void perseguir(PVector obj) {
+		PVector deseado = PVector.sub(obj, pos);
+		deseado.normalize();
+		deseado.mult(velmax);
+		PVector direccion = PVector.sub(deseado, vel);
+		direccion.limit(fmax);
+		aplicarFuerza(direccion);
+	}
+	
+	
+}
