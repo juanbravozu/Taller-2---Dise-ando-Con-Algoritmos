@@ -22,7 +22,6 @@ public class Jugador extends Personaje{
 	}
 	
 	public void pintar() {
-		app.noStroke();
 		float ang = vel.heading() + app.PI/2;
 		Iterator<PVector> it = historia.iterator();
 		int i = 0;

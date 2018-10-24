@@ -22,7 +22,6 @@ public class Jugador extends Personaje{
 	}
 	
 	public void pintar() {
-		app.noStroke();
 		float ang = vel.heading() + app.PI/2;
 		Iterator<PVector> it = historia.iterator();
 		int i = 0;
@@ -57,6 +56,10 @@ public class Jugador extends Personaje{
 		if(historia.size() > 35) {
 			historia.remove(0);
 		}
+	}
+	
+	public void aplicarFuerza(PVector f) {
+		ac.add(f);
 	}
 	
 	public void validarObj() {

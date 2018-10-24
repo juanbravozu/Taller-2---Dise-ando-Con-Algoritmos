@@ -54,7 +54,7 @@ public class Jugador extends Personaje{
 		ac.mult(0);
 		PVector newP = new PVector(pos.x, pos.y);
 		historia.add(newP);
-		if(historia.size() > 35) {
+		if(historia.size() > 235) {
 			historia.remove(0);
 		}
 	}

@@ -19,7 +19,6 @@ public class Main extends PApplet {
 		imageMode(CENTER);
 		noStroke();
 		noCursor();
-		strokeWeight(3);
 	}
 	
 	public void draw() {

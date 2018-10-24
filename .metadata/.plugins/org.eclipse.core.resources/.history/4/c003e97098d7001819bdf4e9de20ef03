@@ -24,8 +24,9 @@ public class Mundo {
 		j.pintar();
 //		app.fill(255,100);
 		app.stroke(255,100);
+		app.strokeWeight(3);
 		app.noFill();
-		app.ellipse(app.mouseX, app.mouseY, 10, 10);
+		app.ellipse(app.mouseX, app.mouseY, 20, 20);
 	}
 	
 	public LinkedList<Recogible> getObjetos() {

@@ -100,7 +100,6 @@
     <end type="TARGET" refId="5"/>  
   </generalization>  
   <association id="13">    
-    <bendpoint x="592" y="218"/>    
     <end type="SOURCE" refId="9" navigable="false">      
       <attribute id="14" name="agujero"/>      
       <multiplicity id="15" minimum="0" maximum="1"/>    
