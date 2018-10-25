@@ -31,10 +31,7 @@ public class Jugador extends Personaje{
 			int tam = 5 + (int)(i/2);
 			int opacidad = 30+(i*4);
 			app.fill(0, 193, 208, opacidad);
-			app.pushMatrix();
-			app.translate(p.x, p.y);
-			app.ellipse(0, 0, tam, tam);
-			app.popMatrix();
+			app.ellipse(p.x, p.y, tam, tam);
 			i++;
 		}
 		app.pushMatrix();
@@ -54,9 +51,25 @@ public class Jugador extends Personaje{
 		ac.mult(0);
 		PVector newP = new PVector(pos.x, pos.y);
 		historia.add(newP);
-		if(historia.size() > 35) {
+		if(historia.size() >  35) {
 			historia.remove(0);
 		}
+	}
+	
+	public void perseguir(PVector obj) {
+		PVector deseado = PVector.sub(obj, pos);
+		
+		float dist = deseado.mag();
+		deseado.normalize();
+		if(dist < 100) {
+			float mag = app.map(dist, 0, 100, 0, velmax);
+			deseado.mult(mag);
+		} else {
+			deseado.mult(velmax);
+		}
+		PVector direccion = PVector.sub(deseado, vel);
+		direccion.limit(fmax);
+		aplicarFuerza(direccion);
 	}
 	
 	public void validarObj() {

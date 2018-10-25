@@ -13,10 +13,24 @@ public class Logica {
 	public Logica(PApplet app) {
 		this.app = app;
 		m = new Mundo(app);
+		pantalla = 0;
+		menus = new PImage[1];
+		menus[0] = app.loadImage("pantalla0.png");
 	}
 	
 	public void pintar() {
-		m.pintar();
+		switch(pantalla) {
+		case 0:
+			app.image(menus[0], app.width/2, app.height/2);
+			break;
+			
+		case 1:
+			m.pintar();
+		}
+		
+		app.stroke(255,100);
+		app.noFill();
+		app.ellipse(app.mouseX, app.mouseY, 10, 10);
 	}
 	
 	public void interaccionMenu() {
@@ -24,6 +38,6 @@ public class Logica {
 	}
 	
 	public void click() {
-		
+		pantalla++;
 	}
 }

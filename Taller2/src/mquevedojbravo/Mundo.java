@@ -22,10 +22,6 @@ public class Mundo {
 	public void pintar() {
 		app.image(fondo, app.width/2, app.height/2);
 		j.pintar();
-//		app.fill(255,100);
-		app.stroke(255,100);
-		app.noFill();
-		app.ellipse(app.mouseX, app.mouseY, 10, 10);
 	}
 	
 	public LinkedList<Recogible> getObjetos() {

@@ -21,8 +21,8 @@ public abstract class Personaje {
 		ac = new PVector(0, 0);
 		vel = new PVector(0, 0);
 		pos = new PVector(app.width/2, app.height/2);
-		velmax = 7f;
-		fmax = 0.3f;
+		velmax = 10f;
+		fmax = 0.4f;	
 		estrellas = 0;
 	}
 	
@@ -33,7 +33,6 @@ public abstract class Personaje {
 		vel.limit(velmax);
 		pos.add(vel);
 		ac.mult(0);
-		PVector newP = new PVector(pos.x, pos.y);
 	}
 	
 	public void aplicarFuerza(PVector f) {

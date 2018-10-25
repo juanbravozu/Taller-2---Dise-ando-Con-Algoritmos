@@ -27,6 +27,10 @@ public class Main extends PApplet {
 	}
 	
 	public void keyPressed() {
-		
+		log.interaccionMenu();
+	}
+	
+	public void mousePressed() {
+		log.click();
 	}
 }
