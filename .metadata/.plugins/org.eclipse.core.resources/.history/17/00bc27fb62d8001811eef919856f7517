@@ -21,6 +21,8 @@ public abstract class Personaje {
 		ac = new PVector(0, 0);
 		vel = new PVector(0, 0);
 		pos = new PVector(app.width/2, app.height/2);
+		velmax = 10f;
+		fmax = 0.4f;	
 		estrellas = 0;
 	}
 	

@@ -19,8 +19,6 @@ public class Jugador extends Personaje{
 		historia = new LinkedList<PVector>();
 		historia.add(pos);
 		nave = app.loadImage("nave.png");
-		velmax = 7f;
-		fmax = 0.3f;	
 	}
 	
 	public void pintar() {
