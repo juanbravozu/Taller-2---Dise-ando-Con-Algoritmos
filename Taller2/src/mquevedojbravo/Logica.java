@@ -19,15 +19,7 @@ public class Logica {
 	}
 	
 	public void pintar() {
-		switch(pantalla) {
-		case 0:
-			app.image(menus[0], app.width/2, app.height/2);
-			break;
-			
-		case 1:
-			m.pintar();
-		}
-		
+		m.pintar();
 		app.stroke(255,100);
 		app.noFill();
 		app.ellipse(app.mouseX, app.mouseY, 10, 10);

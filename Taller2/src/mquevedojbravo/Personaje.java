@@ -6,15 +6,17 @@ import processing.core.PApplet;
 import processing.core.PImage;
 import processing.core.PVector;
 
-public abstract class Personaje {
+public abstract class Personaje extends Thread {
 	protected PApplet app;
 	protected PVector pos;
 	protected PVector vel;
 	protected PVector ac;
 	protected float fmax;
 	protected float velmax;
+	protected float ang;
 	protected int estrellas;
 	protected int tam;
+	protected boolean vivo;
 	
 	public Personaje(PApplet app) {
 		this.app = app;
@@ -22,9 +24,12 @@ public abstract class Personaje {
 		vel = new PVector(0, 0);
 		pos = new PVector(app.width/2, app.height/2);
 		estrellas = 0;
+		vivo = true;
 	}
 	
 	public abstract void pintar();
+	
+	public abstract void run(); 
 	
 	public void actualizar() {
 		vel.add(ac);

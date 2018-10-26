@@ -10,18 +10,24 @@ public class Mundo {
 	private PApplet app;
 	private Jugador j;
 	private PImage fondo;
+	private PImage interfaz;
 	private LinkedList<Ovni> ovnis;
 	private LinkedList<Recogible> objetos;
 	
 	public Mundo(PApplet app) {
 		this.app = app;
 		j = new Jugador(app);
+		j.start();
 		fondo = app.loadImage("fondo.png");
+		interfaz = app.loadImage("interfaz.png");
+		fondo.resize(1200, 700);
+		interfaz.resize(1200, 700);
 	}
 	
 	public void pintar() {
 		app.image(fondo, app.width/2, app.height/2);
 		j.pintar();
+		app.image(interfaz, app.width/2, app.height/2);
 	}
 	
 	public LinkedList<Recogible> getObjetos() {

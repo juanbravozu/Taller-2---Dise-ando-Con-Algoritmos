@@ -9,7 +9,6 @@ public class Ovni extends Personaje implements Runnable {
 	private Mundo m; 
 	private Jugador j;
 	private PImage ovni;
-	private boolean vivo;
 	
 	public Ovni(PApplet app, Mundo m) {
 		super(app);
