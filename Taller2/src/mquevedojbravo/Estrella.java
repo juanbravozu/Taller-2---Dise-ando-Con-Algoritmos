@@ -10,12 +10,6 @@ public class Estrella extends Recogible {
 		super(app);
 	}
 
-	@Override
-	public void run() {
-
-	}
-
-	@Override
 	public void pintar() {
 	
 	}

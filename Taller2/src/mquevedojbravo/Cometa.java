@@ -5,24 +5,28 @@ import java.util.LinkedList;
 import processing.core.PApplet;
 import processing.core.PVector;
 
-public class Cometa extends Recogible {
+public class Cometa extends Recogible implements Runnable {
 
 	private LinkedList<PVector> historia;
+	private boolean vivo;
 	
 	public Cometa(PApplet app) {
 		super(app);
-		// TODO Auto-generated constructor stub
+		vivo = true;
 	}
-
-	
 	public void run() {
-		// TODO Auto-generated method stub
+		while(vivo) {
+			try {
+				Thread.sleep(16);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 
 	}
 
-	@Override
 	public void pintar() {
-		// TODO Auto-generated method stub
 
 	}
 

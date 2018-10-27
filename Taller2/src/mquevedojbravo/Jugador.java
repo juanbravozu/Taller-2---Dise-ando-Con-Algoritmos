@@ -30,7 +30,7 @@ public class Jugador extends Personaje{
 			perseguir(obj);
 			ang = vel.heading() + app.PI/2;
 				try {
-					sleep(20);
+					sleep(16);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}

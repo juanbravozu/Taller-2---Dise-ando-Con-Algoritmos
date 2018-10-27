@@ -18,10 +18,8 @@ public class Mundo {
 		this.app = app;
 		j = new Jugador(app);
 		j.start();
-		fondo = app.loadImage("fondo.png");
-		interfaz = app.loadImage("interfaz.png");
-		fondo.resize(1200, 700);
-		interfaz.resize(1200, 700);
+		fondo = app.loadImage("fondo1.png");
+		interfaz = app.loadImage("Interfaz1.png");
 	}
 	
 	public void pintar() {
