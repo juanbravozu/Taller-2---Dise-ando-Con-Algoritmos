@@ -20,7 +20,6 @@ public class Mundo {
 		this.app = app;
 		j = new Jugador(app);
 		j.start();
-		ovnis = new LinkedList<Ovni>();
 		fondo = app.loadImage("fondo1.png");
 		interfaz = app.loadImage("Interfaz1.png");
 		contadorOvni = 0;
@@ -35,7 +34,7 @@ public class Mundo {
 			o.pintar();
 		}
 		app.image(interfaz, app.width/2, app.height/2);
-		if(contadorOvni % 240 == 0) {
+		if(contadorOvni % 60 == 0) {
 			Ovni o = new Ovni(app, this);
 			o.start();
 			ovnis.add(o);

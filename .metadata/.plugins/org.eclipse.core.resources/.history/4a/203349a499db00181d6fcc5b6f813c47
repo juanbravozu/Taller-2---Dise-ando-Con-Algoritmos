@@ -17,12 +17,12 @@ public abstract class Personaje extends Thread {
 	protected int estrellas;
 	protected int tam;
 	protected boolean vivo;
-	protected PImage img;
 	
 	public Personaje(PApplet app) {
 		this.app = app;
 		ac = new PVector(0, 0);
 		vel = new PVector(0, 0);
+		pos = new PVector(app.width/2, app.height/2);
 		estrellas = 0;
 		vivo = true;
 	}

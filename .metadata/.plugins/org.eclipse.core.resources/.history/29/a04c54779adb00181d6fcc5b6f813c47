@@ -17,19 +17,17 @@ public class Ovni extends Personaje{
 		this.m = m;
 		this.app = app;
 		
-		int random = (int)app.random(4);
+		int random = (int)app.random(2);
 		float x, y;
-		if(random == 0) {
+		if(random == 1) {
 			x = app.random(-200,-50);
-			y = app.random(app.height);
-		} else if(random == 1) {
+		} else {
 			x = app.random(app.width+50, app.width+200);
-			y = app.random(app.height);
-		} else if(random == 2) {
-			x = app.random(app.width);
+		}
+		random = (int)app.random(2);
+		if(random == 1) {
 			y = app.random(-200,-50);
 		} else {
-			x = app.random(app.width);
 			y = app.random(app.height+50, app.height+200);
 		}
 		
@@ -61,7 +59,7 @@ public class Ovni extends Personaje{
 		app.pushMatrix();
 		app.translate(pos.x, pos.y);
 		app.fill(255);
-		app.text(estrellas, 35, 15);
+		app.text(estrellas, 35, 0);
 		app.rotate(ang);
 		app.image(img, 0, 0);
 		app.popMatrix();

@@ -9,18 +9,18 @@ import processing.core.PVector;
 
 public class Jugador extends Personaje{
 
+	private PImage nave;
 	private LinkedList<PVector> historia;
 	private Cometa cometa;
 	private Agujero agujero;
 	
 	public Jugador(PApplet app) {
 		super(app);
-		pos = new PVector(app.width/2, app.height/2);
 		historia = new LinkedList<PVector>();
 		historia.add(pos);
-		img = app.loadImage("nave.png");
+		nave = app.loadImage("nave.png");
 		velmax = 7f;
-		fmax = 0.3f;
+		fmax = 0.3f;	
 	}
 	
 	public void run() {
@@ -54,7 +54,7 @@ public class Jugador extends Personaje{
 		app.pushMatrix();
 		app.translate(pos.x, pos.y);
 		app.rotate(ang);
-		app.image(img, 0, 0);
+		app.image(nave, 0, 0);
 		app.popMatrix();
 	}
 	
