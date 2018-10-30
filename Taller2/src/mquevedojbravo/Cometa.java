@@ -23,7 +23,6 @@ public class Cometa extends Recogible implements Runnable {
 				e.printStackTrace();
 			}
 		}
-
 	}
 
 	public void pintar() {

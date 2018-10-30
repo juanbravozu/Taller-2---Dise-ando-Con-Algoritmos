@@ -32,7 +32,7 @@ public class Ovni extends Personaje{
 			x = app.random(app.width);
 			y = app.random(app.height+50, app.height+200);
 		}
-		
+
 		pos = new PVector(x, y);
 		ovni = app.loadImage("ovni.png");
 		

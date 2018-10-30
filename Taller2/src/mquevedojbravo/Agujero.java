@@ -13,8 +13,6 @@ public class Agujero extends Recogible{
 	public void pintar() {
 
 	}
-
-
 	
 
 }

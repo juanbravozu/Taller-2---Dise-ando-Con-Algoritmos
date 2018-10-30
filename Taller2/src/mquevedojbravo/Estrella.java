@@ -11,7 +11,7 @@ public class Estrella extends Recogible {
 	}
 
 	public void pintar() {
-	
+
 	}
 
 }

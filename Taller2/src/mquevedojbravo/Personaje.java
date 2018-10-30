@@ -26,7 +26,7 @@ public abstract class Personaje extends Thread {
 		estrellas = 0;
 		vivo = true;
 	}
-	
+
 	public abstract void pintar();
 	
 	public abstract void run(); 

@@ -22,7 +22,7 @@ public class Jugador extends Personaje{
 		velmax = 7f;
 		fmax = 0.3f;
 	}
-	
+
 	public void run() {
 		while(vivo) {
 			actualizar();

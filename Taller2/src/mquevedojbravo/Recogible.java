@@ -14,7 +14,6 @@ public abstract class Recogible{
 	public Recogible(PApplet app) {
 		this.app = app;
 	}
-	
 	public abstract void pintar();
 	
 	public PVector getPos() {
