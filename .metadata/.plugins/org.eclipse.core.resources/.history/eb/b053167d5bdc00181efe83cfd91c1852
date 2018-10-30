@@ -43,27 +43,30 @@ public class Logica {
 	public void pintarMenu() {
 		float x = app.width/2;
 		float y = app.height/2;
-		app.image(menus[0], x, y);
-		switch(pantalla) {		
+		switch(pantalla) {
 		case 0:
+			app.image(menus[0], x, y);
 			app.image(botones[0], x, y+90);
 			app.image(botones[1], x, y+160);
 			app.image(botones[2], x, y+230);
 			break;
 			
 		case 1:
+			app.image(menus[0], x, y);
 			app.image(botones[3], x, y+90);
 			app.image(botones[1], x, y+160);
 			app.image(botones[2], x, y+230);
 			break;
 			
 		case 2:
+			app.image(menus[0], x, y);
 			app.image(botones[0], x, y+90);
 			app.image(botones[4], x, y+160);
 			app.image(botones[2], x, y+230);
 			break;
 			
 		case 3:
+			app.image(menus[0], x, y);
 			app.image(botones[0], x, y+90);
 			app.image(botones[1], x, y+160);
 			app.image(botones[5], x, y+230);

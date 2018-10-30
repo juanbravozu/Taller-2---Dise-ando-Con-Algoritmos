@@ -25,7 +25,7 @@ public class Logica {
 				botones[i].resize(botones[i].width/3, botones[i].height/3);
 			} else {
 				botones[i] = app.loadImage("boton"+(i-3)+".png");
-				botones[i].resize((botones[i].width/3) + 30, (botones[i].height/3) + 15);
+				botones[i].resize((botones[i].width/2) + 30, (botones[i].height/2) + 30);
 			}
 		}
 	}
@@ -43,30 +43,33 @@ public class Logica {
 	public void pintarMenu() {
 		float x = app.width/2;
 		float y = app.height/2;
-		app.image(menus[0], x, y);
-		switch(pantalla) {		
+		switch(pantalla) {
 		case 0:
-			app.image(botones[0], x, y+90);
-			app.image(botones[1], x, y+160);
-			app.image(botones[2], x, y+230);
+			app.image(menus[0], x, y);
+			app.image(botones[0], x, y+70);
+			app.image(botones[1], x, y+140);
+			app.image(botones[2], x, y+210);
 			break;
 			
 		case 1:
-			app.image(botones[3], x, y+90);
-			app.image(botones[1], x, y+160);
-			app.image(botones[2], x, y+230);
+			app.image(menus[0], x, y);
+			app.image(botones[3], x, y+70);
+			app.image(botones[1], x, y+140);
+			app.image(botones[2], x, y+210);
 			break;
 			
 		case 2:
-			app.image(botones[0], x, y+90);
-			app.image(botones[4], x, y+160);
-			app.image(botones[2], x, y+230);
+			app.image(menus[0], x, y);
+			app.image(botones[0], x, y+70);
+			app.image(botones[4], x, y+140);
+			app.image(botones[2], x, y+210);
 			break;
 			
 		case 3:
-			app.image(botones[0], x, y+90);
-			app.image(botones[1], x, y+160);
-			app.image(botones[5], x, y+230);
+			app.image(menus[0], x, y);
+			app.image(botones[0], x, y+70);
+			app.image(botones[1], x, y+140);
+			app.image(botones[5], x, y+210);
 		}
 		interaccionMenu();
 	}
@@ -76,11 +79,11 @@ public class Logica {
 		int y = app.mouseY;
 		float posX = app.width/2;
 		float posY = app.height/2;
-		if(y < posY+90+(botones[0].height/2) && y > posY+90-(botones[0].height/2) && x < posX+(botones[0].width/2) && x > posX-(botones[0].width/2)) {
+		if(y < posY+70+(botones[0].height/2) && y > posY+70-(botones[0].height/2) && x < posX+(botones[0].width/2) && x > posX-(botones[0].width/2)) {
 			pantalla = 1;
-		} else if(y < posY+160+(botones[1].height/2) && y > posY+160-(botones[1].height/2) && x < posX+(botones[1].width/2) && x > posX-(botones[1].width/2)) {
+		} else if(y < posY+140+(botones[1].height/2) && y > posY+140-(botones[1].height/2) && x < posX+(botones[1].width/2) && x > posX-(botones[1].width/2)) {
 			pantalla = 2;
-		} else if(y < posY+230+(botones[2].height/2) && y > posY+230-(botones[2].height/2) && x < posX+(botones[2].width/2) && x > posX-(botones[2].width/2)) {
+		} else if(y < posY+210+(botones[2].height/2) && y > posY+210-(botones[2].height/2) && x < posX+(botones[2].width/2) && x > posX-(botones[2].width/2)) {
 			pantalla = 3; 
 		} else {
 			pantalla = 0;
