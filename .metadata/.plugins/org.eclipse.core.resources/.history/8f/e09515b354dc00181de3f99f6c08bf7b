@@ -46,9 +46,9 @@ public class Logica {
 		switch(pantalla) {
 		case 0:
 			app.image(menus[0], x, y);
-			app.image(botones[0], x, y+70);
-			app.image(botones[1], x, y+140);
-			app.image(botones[2], x, y+210);
+			app.image(botones[0], x, y+50);
+			app.image(botones[1], x, y+150);
+			app.image(botones[2], x, y+250);
 			
 		}
 	}

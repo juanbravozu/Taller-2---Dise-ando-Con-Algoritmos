@@ -22,7 +22,7 @@ public class Logica {
 		for(int i = 0; i < botones.length; i++) {
 			if(i < 3) {
 				botones[i] = app.loadImage("boton"+i+".png");
-				botones[i].resize(botones[i].width/3, botones[i].height/3);
+				botones[i].resize(botones[i].width/4, botones[i].height/4);
 			} else {
 				botones[i] = app.loadImage("boton"+(i-3)+".png");
 				botones[i].resize((botones[i].width/2) + 30, (botones[i].height/2) + 30);
@@ -46,9 +46,9 @@ public class Logica {
 		switch(pantalla) {
 		case 0:
 			app.image(menus[0], x, y);
-			app.image(botones[0], x, y+70);
-			app.image(botones[1], x, y+140);
-			app.image(botones[2], x, y+210);
+			app.image(botones[0], x, y+50);
+			app.image(botones[1], x, y+150);
+			app.image(botones[2], x, y+250);
 			
 		}
 	}
