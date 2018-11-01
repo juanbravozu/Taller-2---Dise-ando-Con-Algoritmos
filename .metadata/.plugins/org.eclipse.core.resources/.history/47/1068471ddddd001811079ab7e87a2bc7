@@ -48,7 +48,6 @@ public class Ovni extends Personaje{
 			try {
 				perseguir(m.getJ().getPos());
 				actualizar();
-				perseguirJugador();
 				ang += app.PI/50;
 				sleep(16);
 			} catch (InterruptedException e) {

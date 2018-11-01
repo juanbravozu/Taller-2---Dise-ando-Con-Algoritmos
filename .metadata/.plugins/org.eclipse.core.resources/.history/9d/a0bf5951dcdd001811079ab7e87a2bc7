@@ -35,7 +35,7 @@ public class Mundo {
 			o.pintar();
 		}
 		app.image(interfaz, app.width/2, app.height/2);
-		if(contadorOvni % 180 == 0) {
+		if(contadorOvni % 30 == 0) {
 			Ovni o = new Ovni(app, this);
 			o.start();
 			ovnis.add(o);

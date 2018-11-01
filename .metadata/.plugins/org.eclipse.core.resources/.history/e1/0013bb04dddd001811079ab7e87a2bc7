@@ -48,7 +48,6 @@ public class Ovni extends Personaje{
 			try {
 				perseguir(m.getJ().getPos());
 				actualizar();
-				perseguirJugador();
 				ang += app.PI/50;
 				sleep(16);
 			} catch (InterruptedException e) {
@@ -74,11 +73,5 @@ public class Ovni extends Personaje{
 	
 	public void huir() {
 		
-	}
-	
-	public void perseguirJugador() {
-		if(app.dist(m.getJ().getPos().x, m.getJ().getPos().y, pos.x, pos.y) < 40) {
-			System.out.println("si funciona");
-		}
 	}
 }
