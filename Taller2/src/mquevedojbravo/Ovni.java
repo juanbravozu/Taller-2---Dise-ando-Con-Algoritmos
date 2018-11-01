@@ -1,6 +1,7 @@
 package mquevedojbravo;
 
 import processing.core.PApplet;
+import processing.core.PFont;
 import processing.core.PImage;
 import processing.core.PVector;
 
@@ -11,11 +12,13 @@ public class Ovni extends Personaje{
 	private Jugador j;
 	private PImage ovni;
 	private float ang;
+	private PFont mali;
 	
 	public Ovni(PApplet app, Mundo m) {
 		super(app);
 		this.m = m;
 		this.app = app;
+		mali = app.loadFont("maliB_18.vlw");
 		
 		int random = (int)app.random(4);
 		float x, y;
@@ -62,6 +65,7 @@ public class Ovni extends Personaje{
 		app.pushMatrix();
 		app.translate(pos.x, pos.y);
 		app.fill(255);
+		app.textFont(mali);
 		app.text(estrellas, 35, 15);
 		app.rotate(ang);
 		app.image(img, 0, 0);

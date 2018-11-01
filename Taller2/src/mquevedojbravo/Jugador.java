@@ -103,4 +103,8 @@ public class Jugador extends Personaje{
 	public PVector getPos() {
 		return pos;
 	}
+	
+	public int getEstrellas() {
+		return estrellas;
+	}
 }
