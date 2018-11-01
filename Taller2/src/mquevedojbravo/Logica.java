@@ -2,6 +2,7 @@ package mquevedojbravo;
 
 import processing.core.PApplet;
 import processing.core.PImage;
+import processing.sound.SoundFile;
 
 public class Logica {
 
@@ -9,6 +10,7 @@ public class Logica {
 	private Mundo m;
 	private int pantalla;
 	private PImage[] menus;
+	private SoundFile soundMenu;
 	
 	/**
 	 * Pantalla 0 - Menu Inicio
@@ -27,6 +29,9 @@ public class Logica {
 		for(int i = 0; i < menus.length; i++) {
 			menus[i] = app.loadImage("menu" + i + ".png");
 		}
+		
+		soundMenu = new SoundFile(app, "musicaMenu.wav");
+		soundMenu.loop();
 	}
 
 	public void pintar() {
@@ -38,6 +43,9 @@ public class Logica {
 		
 		case 1:
 			m.pintar();
+			if(soundMenu.isPlaying()) {
+				soundMenu.stop();
+			}
 			break;
 		}
 		interInstru();
