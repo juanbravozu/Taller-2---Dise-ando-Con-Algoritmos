@@ -19,7 +19,7 @@ public class Estrella extends Recogible {
 		app.rotate(ang);
 		app.image(img, 0, 0);
 		app.popMatrix();
-		ang += app.PI/450;
+		ang += app.PI/80;
 	}
 
 }

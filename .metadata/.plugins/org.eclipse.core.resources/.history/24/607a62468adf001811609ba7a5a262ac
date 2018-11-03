@@ -82,7 +82,7 @@ public class Mundo extends Thread {
 					o.start();
 					ovnis.add(o);
 				}
-				if(contadorObj % 230 == 0) {
+				if(contadorObj % 180 == 0) {
 					objetos.add(new Estrella(app));
 				}
 			}

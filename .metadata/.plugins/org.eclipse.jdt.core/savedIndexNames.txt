@@ -1,6 +1,7 @@
 INDEX VERSION 1.131+C:\Users\juand\Documents\Universidad\IV\Algoritmos\Taller 2\Taller_2\.metadata\.plugins\org.eclipse.jdt.core
 2429332019.index
 1860642593.index
+215568337.index
 2589955883.index
 421022922.index
 3947521672.index
@@ -12,7 +13,9 @@ INDEX VERSION 1.131+C:\Users\juand\Documents\Universidad\IV\Algoritmos\Taller 2\
 2692035760.index
 592600685.index
 3808123788.index
+75131508.index
 3854123264.index
+1174862295.index
 4232500288.index
 3637040476.index
 2956378016.index

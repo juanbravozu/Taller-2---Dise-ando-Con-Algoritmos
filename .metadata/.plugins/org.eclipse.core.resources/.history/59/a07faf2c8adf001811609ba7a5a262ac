@@ -30,7 +30,6 @@ public class Mundo extends Thread {
 		vivo = true;
 		ovnis = new LinkedList<Ovni>();
 		Ovni o = new Ovni(app, this);
-		objetos = new LinkedList<Recogible>();
 		o.start();
 		ovnis.add(o);
 		fondo = app.loadImage("fondo1.png");
@@ -82,7 +81,7 @@ public class Mundo extends Thread {
 					o.start();
 					ovnis.add(o);
 				}
-				if(contadorObj % 230 == 0) {
+				if(contadorObj % 180 == 0) {
 					objetos.add(new Estrella(app));
 				}
 			}

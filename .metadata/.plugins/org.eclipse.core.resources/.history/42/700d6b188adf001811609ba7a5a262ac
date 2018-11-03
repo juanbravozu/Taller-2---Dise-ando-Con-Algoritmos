@@ -17,7 +17,6 @@ public class Mundo extends Thread {
 	private LinkedList<Ovni> ovnis;
 	private LinkedList<Recogible> objetos;
 	private int contadorOvni;
-	private int contadorObj;
 	private int contadorTiempo;
 	private PFont mali;
 	private SoundFile mus;
@@ -29,18 +28,13 @@ public class Mundo extends Thread {
 		j.start();
 		vivo = true;
 		ovnis = new LinkedList<Ovni>();
-		Ovni o = new Ovni(app, this);
-		objetos = new LinkedList<Recogible>();
-		o.start();
-		ovnis.add(o);
 		fondo = app.loadImage("fondo1.png");
 		interfaz = app.loadImage("Interfaz1.png");
 		contadorOvni = 0;
-		contadorObj = 100;
 		mali = app.loadFont("maliB_28.vlw");
 		mus = new SoundFile(app, "musicaJuego.wav");
 		mus.play();
-		contadorTiempo = app.millis()+59999;
+		contadorTiempo = app.millis()+19999;
 	}
 	
 	public void pintar() {
@@ -53,11 +47,6 @@ public class Mundo extends Thread {
 				Ovni o = it.next();
 				o.pintar();
 			}
-		}
-		Iterator<Recogible> ite = objetos.iterator();
-		while(ite.hasNext()) {
-			Recogible r = ite.next();
-			r.pintar();
 		}
 		app.image(interfaz, app.width/2, app.height/2);
 		app.textAlign(app.CORNER, app.CENTER);
@@ -82,12 +71,8 @@ public class Mundo extends Thread {
 					o.start();
 					ovnis.add(o);
 				}
-				if(contadorObj % 230 == 0) {
-					objetos.add(new Estrella(app));
-				}
 			}
 			contadorOvni++;
-			contadorObj++;
 			try {
 				sleep(16);
 			} catch (InterruptedException e) {
