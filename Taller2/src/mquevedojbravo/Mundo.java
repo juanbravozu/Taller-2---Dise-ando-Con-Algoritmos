@@ -54,10 +54,12 @@ public class Mundo extends Thread {
 				o.pintar();
 			}
 		}
-		Iterator<Recogible> ite = objetos.iterator();
-		while(ite.hasNext()) {
-			Recogible r = ite.next();
-			r.pintar();
+		synchronized(objetos) {
+			Iterator<Recogible> ite = objetos.iterator();
+			while(ite.hasNext()) {
+				Recogible r = ite.next();
+				r.pintar();
+			}
 		}
 		app.image(interfaz, app.width/2, app.height/2);
 		app.textAlign(app.CORNER, app.CENTER);
@@ -82,12 +84,16 @@ public class Mundo extends Thread {
 					o.start();
 					ovnis.add(o);
 				}
+			}
+			synchronized(objetos) {
 				if(contadorObj % 230 == 0) {
 					objetos.add(new Estrella(app));
 				}
 			}
+			
 			contadorOvni++;
 			contadorObj++;
+			
 			try {
 				sleep(16);
 			} catch (InterruptedException e) {
