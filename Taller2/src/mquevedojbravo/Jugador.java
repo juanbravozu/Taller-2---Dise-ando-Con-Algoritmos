@@ -29,12 +29,12 @@ public class Jugador extends Personaje{
 			PVector obj = new PVector(app.mouseX, app.mouseY);
 			perseguir(obj);
 			ang = vel.heading() + app.PI/2;
-				try {
-					sleep(16);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
+			try {					
+				sleep(16);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
 			}
+		}
 	}
 	
 	public void pintar() {
@@ -88,8 +88,17 @@ public class Jugador extends Personaje{
 		aplicarFuerza(direccion);
 	}
 	
-	public void validarObj() {
-		
+	public boolean validarObj(Recogible o) {
+		if(app.dist(pos.x, pos.y, o.getPos().x, o.getPos().y) < 20) {
+			if(o instanceof Estrella) {
+				estrellas++;
+				return true;
+			} else {
+				return false;
+			}
+		} else {
+			return false;
+		}
 	}
 	
 	public void usarCometa() {

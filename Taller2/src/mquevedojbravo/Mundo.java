@@ -91,6 +91,13 @@ public class Mundo extends Thread {
 				}
 			}
 			
+			Iterator<Recogible> it = objetos.iterator();
+			while(it.hasNext()) {
+				Recogible o = it.next();
+				if(j.validarObj(o)) {
+					it.remove();
+				}
+			}
 			contadorOvni++;
 			contadorObj++;
 			
