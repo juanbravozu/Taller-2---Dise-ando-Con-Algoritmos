@@ -82,7 +82,7 @@ public class Ovni extends Personaje{
 	
 	public void perseguirJugador() {
 		if(app.dist(m.getJ().getPos().x, m.getJ().getPos().y, pos.x, pos.y) < 40) {
-			System.out.println("si funciona");
+		
 		}
 	}
 }
