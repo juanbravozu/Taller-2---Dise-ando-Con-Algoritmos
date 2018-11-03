@@ -23,7 +23,7 @@ public class Logica {
 	
 	public Logica(PApplet app) {
 		this.app = app;
-		m = new Mundo(app);
+		m = null;
 		pantalla = 0;
 		menus = new PImage[12];
 		for(int i = 0; i < menus.length; i++) {
@@ -38,26 +38,32 @@ public class Logica {
 		
 		switch(pantalla) {
 		case 0:
-			pintarMenu();
+			interaccionMenu();
 			break;
 		
 		case 1:
+			if(m == null) {
+				m = new Mundo(app);
+				m.start();
+			}
 			m.pintar();
 			if(soundMenu.isPlaying()) {
 				soundMenu.stop();
 			}
+			if(m.terminarJuego()) {
+				pantalla = 0;
+				m = null;
+				soundMenu.loop();
+			}
 			break;
+			
+		case 2:
+			
 		}
 		interInstru();
 		app.stroke(255,100);
 		app.noFill();
 		app.ellipse(app.mouseX, app.mouseY, 10, 10);
-	}
-	
-	public void pintarMenu() {
-		float x = app.width/2;
-		float y = app.height/2;
-		interaccionMenu();
 	}
 	
 	public void interaccionMenu() {
