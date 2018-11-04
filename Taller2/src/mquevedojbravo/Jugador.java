@@ -116,4 +116,8 @@ public class Jugador extends Personaje{
 	public int getEstrellas() {
 		return estrellas;
 	}
+	
+	public void setEstrella(int e) {
+		estrellas = e;
+	}
 }

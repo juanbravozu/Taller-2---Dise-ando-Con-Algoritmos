@@ -1,5 +1,7 @@
 package mquevedojbravo;
 
+import java.util.Iterator;
+
 import processing.core.PApplet;
 import processing.core.PFont;
 import processing.core.PImage;
@@ -18,6 +20,7 @@ public class Ovni extends Personaje{
 		super(app);
 		this.m = m;
 		this.app = app;
+		vel.set(m.getJ().getPos());
 		mali = app.loadFont("maliB_18.vlw");
 		
 		int random = (int)app.random(4);
@@ -49,9 +52,19 @@ public class Ovni extends Personaje{
 	public void run() {
 		while(vivo) {
 			try {
-				perseguir(m.getJ().getPos());
+				if(estrellas > m.getJ().getEstrellas()) {
+					perseguirJugador();
+				} else if(estrellas < m.getJ().getEstrellas()){					
+					if(app.dist(pos.x, pos.y, m.getJ().getPos().x, m.getJ().getPos().y) < 250) {
+						huir(m.getJ().getPos());
+					} else {
+						buscarObj();
+					}
+				} else {
+					buscarObj();
+				}
 				actualizar();
-				perseguirJugador();
+				
 				ang += app.PI/50;
 				sleep(16);
 			} catch (InterruptedException e) {
@@ -73,16 +86,41 @@ public class Ovni extends Personaje{
 	}
 	
 	public void buscarObj() {
-		
+		Recogible o = null;
+		Iterator<Recogible> it = m.getObjetos().iterator();
+		if(it.hasNext()) {
+			o = it.next();
+		}
+		while(it.hasNext()) {
+			Recogible obj = it.next();
+			if(app.dist(pos.x,pos.y, obj.getPos().x, obj.getPos().y) < app.dist(pos.x, pos.y, o.getPos().x, o.getPos().y)) {
+				o = obj;
+			}
+		}
+		if(o != null) {
+			perseguir(o.getPos());
+		}
 	}
 	
-	public void huir() {
-		
+	public void huir(PVector obj) {
+		PVector deseado = PVector.add(obj, pos);
+		deseado.normalize();
+		deseado.mult(velmax);
+		PVector direccion = PVector.sub(deseado, vel);
+		direccion.limit(fmax);
+		aplicarFuerza(direccion);
 	}
 	
 	public void perseguirJugador() {
+		perseguir(m.getJ().getPos());
 		if(app.dist(m.getJ().getPos().x, m.getJ().getPos().y, pos.x, pos.y) < 40) {
-		
+			if(m.getJ().getEstrellas() > 0) {
+				if(m.getJ().getEstrellas()-5 >= 0) {
+					m.getJ().setEstrella(m.getJ().getEstrellas()-5);
+				} else {
+					m.getJ().setEstrella(0);
+				}
+			}
 		}
 	}
 }
