@@ -12,6 +12,7 @@ public class Mundo extends Thread {
 
 	private PApplet app;
 	private Jugador j;
+	private PImage fondo;
 	private PImage interfaz;
 	private LinkedList<Ovni> ovnis;
 	private LinkedList<Recogible> objetos;

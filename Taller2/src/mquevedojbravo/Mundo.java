@@ -66,7 +66,7 @@ public class Mundo extends Thread {
 		app.textFont(mali);
 		app.fill(255);
 		app.text(j.getEstrellas(), 1111.64f, 620.7f);
-		if((int)(contadorTiempo-app.millis())/1000 > 10) {
+		if((int)(contadorTiempo-app.millis())/1000 > 9) {
 			app.text("0:"+(int)(contadorTiempo-app.millis())/1000, 1061.64f, 590);
 		} else {
 			app.text("0:0"+(int)(contadorTiempo-app.millis())/1000, 1061.64f, 590);
@@ -85,14 +85,27 @@ public class Mundo extends Thread {
 					ovnis.add(o);
 				}
 			}
+<<<<<<< HEAD
 			
+=======
+>>>>>>> 46ac84a10f7889ab5b5b890aa93b757af79123fe
 			synchronized(objetos) {
 				if(contadorObj % 230 == 0) {
 					objetos.add(new Estrella(app));
 				}
+				
+				Iterator<Recogible> it = objetos.iterator();
+				while(it.hasNext()) {
+					Recogible o = it.next();
+					if(j.validarObj(o)) {
+						it.remove();
+					}
+				}
 			}
+					
 			contadorOvni++;
 			contadorObj++;
+			
 			try {
 				sleep(16);
 			} catch (InterruptedException e) {
