@@ -12,7 +12,6 @@ public class Mundo extends Thread {
 
 	private PApplet app;
 	private Jugador j;
-	private PImage fondo;
 	private PImage interfaz;
 	private LinkedList<Ovni> ovnis;
 	private LinkedList<Recogible> objetos;
@@ -54,12 +53,10 @@ public class Mundo extends Thread {
 				o.pintar();
 			}
 		}
-		synchronized(objetos) {
-			Iterator<Recogible> ite = objetos.iterator();
-			while(ite.hasNext()) {
-				Recogible r = ite.next();
-				r.pintar();
-			}
+		Iterator<Recogible> ite = objetos.iterator();
+		while(ite.hasNext()) {
+			Recogible r = ite.next();
+			r.pintar();
 		}
 		app.image(interfaz, app.width/2, app.height/2);
 		app.textAlign(app.CORNER, app.CENTER);
@@ -84,9 +81,6 @@ public class Mundo extends Thread {
 					o.start();
 					ovnis.add(o);
 				}
-			}
-			
-			synchronized(objetos) {
 				if(contadorObj % 230 == 0) {
 					objetos.add(new Estrella(app));
 				}
