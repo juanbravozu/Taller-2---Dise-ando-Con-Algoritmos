@@ -30,9 +30,9 @@ public class Mundo extends Thread {
 		vivo = true;
 		ovnis = new LinkedList<Ovni>();
 		Ovni o = new Ovni(app, this);
+		objetos = new LinkedList<Recogible>();
 		o.start();
 		ovnis.add(o);
-		objetos = new LinkedList<Recogible>();
 		fondo = app.loadImage("fondo1.png");
 		interfaz = app.loadImage("Interfaz1.png");
 		contadorOvni = 0;
@@ -87,7 +87,7 @@ public class Mundo extends Thread {
 			}
 
 			synchronized(objetos) {
-				if(contadorObj % 60 == 0) {
+				if(contadorObj % 230 == 0) {
 					objetos.add(new Estrella(app));
 				}
 				
@@ -123,10 +123,6 @@ public class Mundo extends Thread {
 	
 	public LinkedList<Recogible> getObjetos() {
 		return objetos;
-	}
-	
-	public LinkedList<Ovni> getOvnis() {
-		return ovnis;
 	}
 	
 	public Jugador getJ() {

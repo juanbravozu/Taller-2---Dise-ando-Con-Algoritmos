@@ -55,13 +55,11 @@ public class Ovni extends Personaje{
 		while(vivo) {
 			try {
 				if(estrellas > m.getJ().getEstrellas()) {
-					velmax = 5;
-					fmax = 0.2f;
 					perseguirJugador();
 				} else if(estrellas < m.getJ().getEstrellas()){					
-					if(app.dist(pos.x, pos.y, m.getJ().getPos().x, m.getJ().getPos().y) < 125) {
+					if(app.dist(pos.x, pos.y, m.getJ().getPos().x, m.getJ().getPos().y) < 250) {
 						velmax = 10;
-						fmax = 0.5f;
+						fmax = 0.4f;
 						huir(m.getJ().getPos());
 					} else {
 						velmax = 5;

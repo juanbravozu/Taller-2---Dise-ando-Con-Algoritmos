@@ -55,17 +55,11 @@ public class Ovni extends Personaje{
 		while(vivo) {
 			try {
 				if(estrellas > m.getJ().getEstrellas()) {
-					velmax = 5;
-					fmax = 0.2f;
 					perseguirJugador();
 				} else if(estrellas < m.getJ().getEstrellas()){					
-					if(app.dist(pos.x, pos.y, m.getJ().getPos().x, m.getJ().getPos().y) < 125) {
-						velmax = 10;
-						fmax = 0.5f;
+					if(app.dist(pos.x, pos.y, m.getJ().getPos().x, m.getJ().getPos().y) < 250) {
 						huir(m.getJ().getPos());
 					} else {
-						velmax = 5;
-						fmax = 0.2f;
 						buscarObj();
 					}
 				} else {
@@ -97,23 +91,21 @@ public class Ovni extends Personaje{
 	
 	public void buscarObj() {
 		Recogible o = null;
-		synchronized(m.getObjetos()) {
-			Iterator<Recogible> it = m.getObjetos().iterator();
-			if(it.hasNext()) {
-				o = it.next();
+		Iterator<Recogible> it = m.getObjetos().iterator();
+		if(it.hasNext()) {
+			o = it.next();
+		}
+		while(it.hasNext()) {
+			Recogible obj = it.next();
+			if(app.dist(pos.x,pos.y, obj.getPos().x, obj.getPos().y) < app.dist(pos.x, pos.y, o.getPos().x, o.getPos().y)) {
+				o = obj;
 			}
-			while(it.hasNext()) {
-				Recogible obj = it.next();
-				if(app.dist(pos.x,pos.y, obj.getPos().x, obj.getPos().y) < app.dist(pos.x, pos.y, o.getPos().x, o.getPos().y)) {
-					o = obj;
-				}
-			}
-			if(o != null) {
-				perseguir(o.getPos());
-				if(app.dist(pos.x, pos.y, o.getPos().x, o.getPos().y) < 25) {
-					estrellas++;
-					m.getObjetos().remove(o);
-				}
+		}
+		if(o != null) {
+			perseguir(o.getPos());
+			if(app.dist(pos.x, pos.y, o.getPos().x, o.getPos().y) < 25) {
+				estrellas++;
+				m.getObjetos().remove(o);
 			}
 		}
 	}
@@ -125,11 +117,6 @@ public class Ovni extends Personaje{
 		PVector direccion = PVector.sub(deseado, vel);
 		direccion.limit(fmax);
 		aplicarFuerza(direccion);
-		if(app.dist(m.getJ().getPos().x, m.getJ().getPos().y, pos.x, pos.y) < 40 && vivo) {
-			m.getJ().setEstrella(m.getJ().getEstrellas()+2);
-			vivo = false;
-			m.getOvnis().remove(this);
-		}
 	}
 	
 	public void perseguirJugador() {
@@ -146,7 +133,7 @@ public class Ovni extends Personaje{
 	}
 	
 	public void mover() {
-		if(pos.x > 60 && pos.x < 1140 && pos.y > 60 && pos.y < 615) {
+		if(app.dist(pos.x, pos.y, app.width/2, app.height/2) < 300) {
 			entrar = true;
 		}
 		if(entrar) {

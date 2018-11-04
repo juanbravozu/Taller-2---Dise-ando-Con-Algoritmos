@@ -30,9 +30,9 @@ public class Mundo extends Thread {
 		vivo = true;
 		ovnis = new LinkedList<Ovni>();
 		Ovni o = new Ovni(app, this);
+		objetos = new LinkedList<Recogible>();
 		o.start();
 		ovnis.add(o);
-		objetos = new LinkedList<Recogible>();
 		fondo = app.loadImage("fondo1.png");
 		interfaz = app.loadImage("Interfaz1.png");
 		contadorOvni = 0;

@@ -55,17 +55,11 @@ public class Ovni extends Personaje{
 		while(vivo) {
 			try {
 				if(estrellas > m.getJ().getEstrellas()) {
-					velmax = 5;
-					fmax = 0.2f;
 					perseguirJugador();
 				} else if(estrellas < m.getJ().getEstrellas()){					
-					if(app.dist(pos.x, pos.y, m.getJ().getPos().x, m.getJ().getPos().y) < 125) {
-						velmax = 10;
-						fmax = 0.5f;
+					if(app.dist(pos.x, pos.y, m.getJ().getPos().x, m.getJ().getPos().y) < 250) {
 						huir(m.getJ().getPos());
 					} else {
-						velmax = 5;
-						fmax = 0.2f;
 						buscarObj();
 					}
 				} else {
@@ -97,23 +91,21 @@ public class Ovni extends Personaje{
 	
 	public void buscarObj() {
 		Recogible o = null;
-		synchronized(m.getObjetos()) {
-			Iterator<Recogible> it = m.getObjetos().iterator();
-			if(it.hasNext()) {
-				o = it.next();
+		Iterator<Recogible> it = m.getObjetos().iterator();
+		if(it.hasNext()) {
+			o = it.next();
+		}
+		while(it.hasNext()) {
+			Recogible obj = it.next();
+			if(app.dist(pos.x,pos.y, obj.getPos().x, obj.getPos().y) < app.dist(pos.x, pos.y, o.getPos().x, o.getPos().y)) {
+				o = obj;
 			}
-			while(it.hasNext()) {
-				Recogible obj = it.next();
-				if(app.dist(pos.x,pos.y, obj.getPos().x, obj.getPos().y) < app.dist(pos.x, pos.y, o.getPos().x, o.getPos().y)) {
-					o = obj;
-				}
-			}
-			if(o != null) {
-				perseguir(o.getPos());
-				if(app.dist(pos.x, pos.y, o.getPos().x, o.getPos().y) < 25) {
-					estrellas++;
-					m.getObjetos().remove(o);
-				}
+		}
+		if(o != null) {
+			perseguir(o.getPos());
+			if(app.dist(pos.x, pos.y, o.getPos().x, o.getPos().y) < 25) {
+				estrellas++;
+				m.getObjetos().remove(o);
 			}
 		}
 	}

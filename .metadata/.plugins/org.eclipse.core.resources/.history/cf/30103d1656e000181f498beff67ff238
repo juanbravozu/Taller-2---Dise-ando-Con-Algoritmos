@@ -10,7 +10,7 @@ public class Estrella extends Recogible {
 	public Estrella(PApplet app) {
 		super(app);
 		img = app.loadImage("estrella.png");
-		pos = new PVector(app.random(100 ,app.width-100), app.random(50, app.height-50));
+		pos = new PVector(app.random(app.width), app.random(app.height));
 	}
 
 	public void pintar() {
