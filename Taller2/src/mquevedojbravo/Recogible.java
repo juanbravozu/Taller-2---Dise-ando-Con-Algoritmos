@@ -9,7 +9,6 @@ public abstract class Recogible{
 	protected PApplet app;
 	protected PImage img;
 	protected PVector pos;
-	protected int tam;
 	
 	public Recogible(PApplet app) {
 		this.app = app;

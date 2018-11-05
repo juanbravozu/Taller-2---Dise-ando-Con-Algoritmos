@@ -95,7 +95,15 @@ public class Mundo extends Thread {
 
 			synchronized(objetos) {
 				if(contadorObj % 60 == 0) {
-					objetos.add(new Estrella(app));
+					int ran = (int)app.random(20);
+					if(ran == 0) {
+						objetos.add(new Agujero(app));
+					} else if(ran == 1) {
+						
+					}else {
+						objetos.add(new Estrella(app));
+					}
+					
 				}
 				
 				Iterator<Recogible> it = objetos.iterator();

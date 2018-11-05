@@ -10,8 +10,8 @@ import processing.core.PVector;
 public class Jugador extends Personaje{
 
 	private LinkedList<PVector> historia;
-	private Cometa cometa;
-	private Agujero agujero;
+	private int cometa;
+	private int agujeros;
 	private int contOvnis;
 	
 	public Jugador(PApplet app) {
@@ -23,6 +23,8 @@ public class Jugador extends Personaje{
 		velmax = 7f;
 		fmax = 0.3f;
 		contOvnis = 0;
+		agujeros = 0;
+		cometa = 0;
 	}
 
 	public void run() {
@@ -91,24 +93,36 @@ public class Jugador extends Personaje{
 	}
 	
 	public boolean validarObj(Recogible o) {
-		if(app.dist(pos.x, pos.y, o.getPos().x, o.getPos().y) < 20) {
+		if(app.dist(pos.x, pos.y, o.getPos().x, o.getPos().y) < 28) {
 			if(o instanceof Estrella) {
 				estrellas++;
+				return true;
+			} else if(o instanceof Agujero){
+				agujeros++;
 				return true;
 			} else {
 				return false;
 			}
-		} else {
+		}else {
 			return false;
-		}
+		 }
 	}
 	
 	public void usarCometa() {
-		
+		if(estrellas >= 5) {
+			
+			estrellas -= 5;
+		}
 	}
 	
-	public void usarAgujero() {
-		
+	public boolean usarAgujero() {
+		if(estrellas >= 15) {
+			
+			estrellas -= 15;
+			return true;
+		}else {
+			return false;
+		}
 	}
 	
 	public PVector getPos() {
@@ -130,5 +144,23 @@ public class Jugador extends Personaje{
 	public void setContOvnis(int contOvnis) {
 		this.contOvnis = contOvnis;
 	}
+	
+	public int getAgujero() {
+		return agujeros;
+	}
+	
+	public void setAgujero(int agujeros) {
+		this.agujeros = agujeros;
+	}
+
+	public int getCometa() {
+		return cometa;
+	}
+
+	public void setCometa(int cometa) {
+		this.cometa = cometa;
+	}
+	
+	
 	
 }

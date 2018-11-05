@@ -1,6 +1,7 @@
 package mquevedojbravo;
 
 import processing.core.PApplet;
+import processing.core.PFont;
 import processing.core.PImage;
 import processing.sound.SoundFile;
 
@@ -15,6 +16,7 @@ public class Logica {
 	private int contOvnis;
 	private int cometas;
 	private int agujeros;
+	private PFont mali;
 	
 	/**
 	 * Pantalla 0 - Menu Inicio
@@ -31,6 +33,7 @@ public class Logica {
 		this.app = app;
 		m = null;
 		pantalla = 0;
+		mali = app.loadFont("maliB_47.vlw");
 		menus = new PImage[16];
 		for(int i = 0; i < menus.length; i++) {
 			menus[i] = app.loadImage("menu" + i + ".png");
@@ -65,6 +68,8 @@ public class Logica {
 				m.pararMus();
 				estrellas = m.getJ().getEstrellas();
 				contOvnis = m.getJ().getContOvnis();
+				agujeros = m.getJ().getAgujero();
+				cometas = m.getJ().getCometa();
 				m = null;
 				soundMenu.loop();
 			}
@@ -73,6 +78,8 @@ public class Logica {
 				pantalla = 7;
 				estrellas = m.getJ().getEstrellas();
 				contOvnis = m.getJ().getContOvnis();
+				agujeros = m.getJ().getAgujero();
+				cometas = m.getJ().getCometa();
 				m = null;
 				soundMenu.loop();
 			}
@@ -81,11 +88,20 @@ public class Logica {
 			
 		case 6:
 			ganaste();
+			app.textFont(mali);
+			app.text(estrellas, 452.18f, 330f);
+			app.text(contOvnis, 818.3f, 330f);
+			app.text(agujeros, 818.3f, 450.92f);
+			app.text(cometas, 452.18f, 450.92f);
 			break;
 			
 		case 7:
 			perdiste();
-			app.text("x: "+app.mouseX+" y: "+app.mouseY, app.mouseX, app.mouseY);
+			app.textFont(mali);
+			app.text(estrellas, 452.18f, 330f);
+			app.text(contOvnis, 818.3f, 330f);
+			app.text(agujeros, 818.3f, 450.92f);
+			app.text(cometas, 452.18f, 450.92f);
 			break;
 		}
 		interInstru();
