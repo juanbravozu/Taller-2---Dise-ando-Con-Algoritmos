@@ -66,17 +66,21 @@ public class Mundo extends Thread {
 			}
 		}
 		app.image(interfaz, app.width/2, app.height/2);
+		//Texto Interfaz
 		app.textAlign(app.CORNER, app.CENTER);
 		app.textFont(mali);
 		app.fill(255);
-		app.text(j.getEstrellas(), 1111.64f, 620.7f);
+		app.text(j.getEstrellas(), 1150.81f, 556.21f);
+		app.text(j.getAgujero(),  1150.81f, 595.71f);
+		app.text(j.getCometa(),  1150.81f, 632.5f);
+		//Tiempo
 		int seg = (contadorTiempo - app.millis())/1000;
 		int min = seg/60;
 		seg -= min*60;
 		if(seg > 9) {
-			app.text(min + ":" + seg, 1061.64f, 590);
+			app.text(min + ":" + seg, 946.62f, 635.13f);
 		} else {
-			app.text(min + ":0" + seg, 1061.64f, 590);
+			app.text(min + ":0" + seg, 946.62f, 635.13f);
 		}
 		
 		
