@@ -160,9 +160,6 @@ public class Mundo extends Thread {
 	
 	public void tecla() {
 		if(app.key == '1' && j.usarAgujero()) {
-			for(Ovni o : ovnis) {
-				o.setVivo(false);
-			}
 			ovnis.clear();
 		}
 	}

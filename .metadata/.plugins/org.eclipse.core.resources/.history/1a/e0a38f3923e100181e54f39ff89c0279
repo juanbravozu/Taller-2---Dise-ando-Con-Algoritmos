@@ -50,8 +50,4 @@ public abstract class Personaje extends Thread {
 		direccion.limit(fmax);
 		aplicarFuerza(direccion);
 	}
-	
-	public void setVivo(boolean vivo) {
-		this.vivo = vivo;
-	}
 }

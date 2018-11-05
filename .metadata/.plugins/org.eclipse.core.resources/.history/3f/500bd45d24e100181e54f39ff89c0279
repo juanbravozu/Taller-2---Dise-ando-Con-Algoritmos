@@ -132,7 +132,6 @@ public class Ovni extends Personaje{
 		synchronized(m.getOvnis()) {
 		if(app.dist(m.getJ().getPos().x, m.getJ().getPos().y, pos.x, pos.y) < 45 && vivo) {
 			m.getJ().setEstrella(m.getJ().getEstrellas()+2);
-			m.getJ().setEstrellasTotal(m.getJ().getEstrellasTotal()+2);
 			m.getJ().setContOvnis(m.getJ().getContOvnis()+1);
 			vivo = false;
 			m.getOvnis().remove(this);

@@ -27,7 +27,7 @@ public class Main extends PApplet {
 	}
 	
 	public void keyPressed() {
-		log.tecla();
+		log.interaccionMenu();
 	}
 	
 	public void mousePressed() {

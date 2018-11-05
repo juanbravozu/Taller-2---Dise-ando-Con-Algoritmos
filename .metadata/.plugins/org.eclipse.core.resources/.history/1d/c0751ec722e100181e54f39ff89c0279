@@ -12,8 +12,6 @@ public class Jugador extends Personaje{
 	private LinkedList<PVector> historia;
 	private int cometa;
 	private int agujeros;
-	private int agujerosTotal;
-	private int estrellasTotal;
 	private int contOvnis;
 	
 	public Jugador(PApplet app) {
@@ -26,8 +24,6 @@ public class Jugador extends Personaje{
 		fmax = 0.3f;
 		contOvnis = 0;
 		agujeros = 0;
-		agujerosTotal = 0;
-		estrellasTotal = 0;
 		cometa = 0;
 	}
 
@@ -100,11 +96,9 @@ public class Jugador extends Personaje{
 		if(app.dist(pos.x, pos.y, o.getPos().x, o.getPos().y) < 28) {
 			if(o instanceof Estrella) {
 				estrellas++;
-				estrellasTotal++;
 				return true;
 			} else if(o instanceof Agujero){
 				agujeros++;
-				agujerosTotal++;
 				return true;
 			} else {
 				return false;
@@ -122,8 +116,8 @@ public class Jugador extends Personaje{
 	}
 	
 	public boolean usarAgujero() {
-		if(agujeros > 0 && estrellas >= 15) {
-			agujeros--;
+		if(estrellas >= 15) {
+			
 			estrellas -= 15;
 			return true;
 		}else {
@@ -166,16 +160,7 @@ public class Jugador extends Personaje{
 	public void setCometa(int cometa) {
 		this.cometa = cometa;
 	}
-
-	public int getAgujerosTotal() {
-		return agujerosTotal;
-	}	
 	
-	public int getEstrellasTotal() {
-		return estrellasTotal;
-	}
 	
-	public void setEstrellasTotal(int e) {
-		estrellasTotal = e;
-	}
+	
 }

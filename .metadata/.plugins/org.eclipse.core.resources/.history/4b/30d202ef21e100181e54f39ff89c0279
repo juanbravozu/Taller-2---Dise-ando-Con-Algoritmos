@@ -130,9 +130,8 @@ public class Ovni extends Personaje{
 		aplicarFuerza(direccion);
 		
 		synchronized(m.getOvnis()) {
-		if(app.dist(m.getJ().getPos().x, m.getJ().getPos().y, pos.x, pos.y) < 45 && vivo) {
+		if(app.dist(m.getJ().getPos().x, m.getJ().getPos().y, pos.x, pos.y) < 35 && vivo) {
 			m.getJ().setEstrella(m.getJ().getEstrellas()+2);
-			m.getJ().setEstrellasTotal(m.getJ().getEstrellasTotal()+2);
 			m.getJ().setContOvnis(m.getJ().getContOvnis()+1);
 			vivo = false;
 			m.getOvnis().remove(this);
@@ -142,7 +141,7 @@ public class Ovni extends Personaje{
 	
 	public void perseguirJugador() {
 		perseguir(m.getJ().getPos());
-		if(app.dist(m.getJ().getPos().x, m.getJ().getPos().y, pos.x, pos.y) < 45 && atacar > 60) {
+		if(app.dist(m.getJ().getPos().x, m.getJ().getPos().y, pos.x, pos.y) < 35 && atacar > 60) {
 			if(m.getJ().getEstrellas() > 0) {
 				if(m.getJ().getEstrellas()-5 >= 0) {
 					m.getJ().setEstrella(m.getJ().getEstrellas()-5);					

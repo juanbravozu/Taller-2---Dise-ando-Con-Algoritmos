@@ -66,9 +66,9 @@ public class Logica {
 					pantalla = 7;
 				}
 				m.pararMus();
-				estrellas = m.getJ().getEstrellasTotal();
+				estrellas = m.getJ().getEstrellas();
 				contOvnis = m.getJ().getContOvnis();
-				agujeros = m.getJ().getAgujerosTotal();
+				agujeros = m.getJ().getAgujero();
 				cometas = m.getJ().getCometa();
 				m = null;
 				soundMenu.loop();
