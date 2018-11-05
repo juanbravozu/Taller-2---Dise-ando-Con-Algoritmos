@@ -49,7 +49,7 @@ public class Ovni extends Personaje{
 		ang = 0;
 		entrar = false;
 		atacar = 0;
-		
+		estrellas = 20;
 		img = app.loadImage("ovni.png");
 	}
 

@@ -11,10 +11,6 @@ public class Logica {
 	private int pantalla;
 	private PImage[] menus;
 	private SoundFile soundMenu;
-	private int estrellas;
-	private int contOvnis;
-	private int cometas;
-	private int agujeros;
 	
 	/**
 	 * Pantalla 0 - Menu Inicio
@@ -63,20 +59,16 @@ public class Logica {
 					pantalla = 7;
 				}
 				m.pararMus();
-				estrellas = m.getJ().getEstrellas();
-				contOvnis = m.getJ().getContOvnis();
 				m = null;
 				soundMenu.loop();
 			}
 			if(m != null && m.getMatar()) {
 				m.pararMus();
 				pantalla = 7;
-				estrellas = m.getJ().getEstrellas();
-				contOvnis = m.getJ().getContOvnis();
 				m = null;
 				soundMenu.loop();
 			}
-			
+			app.text("x: "+app.mouseX+" y: "+app.mouseY, app.mouseX, app.mouseY);
 			break;
 			
 		case 6:
@@ -85,7 +77,6 @@ public class Logica {
 			
 		case 7:
 			perdiste();
-			app.text("x: "+app.mouseX+" y: "+app.mouseY, app.mouseX, app.mouseY);
 			break;
 		}
 		interInstru();

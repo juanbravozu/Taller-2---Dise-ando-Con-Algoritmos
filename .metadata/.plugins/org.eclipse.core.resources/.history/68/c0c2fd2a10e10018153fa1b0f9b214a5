@@ -23,6 +23,7 @@ public class Jugador extends Personaje{
 		velmax = 7f;
 		fmax = 0.3f;
 		contOvnis = 0;
+		estrellas = 15;
 	}
 
 	public void run() {

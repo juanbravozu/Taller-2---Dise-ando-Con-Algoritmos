@@ -16,7 +16,6 @@ public class Ovni extends Personaje{
 	private float ang;
 	private PFont mali;
 	private boolean entrar;
-	private int atacar;
 	
 	public Ovni(PApplet app, Mundo m) {
 		super(app);
@@ -48,7 +47,6 @@ public class Ovni extends Personaje{
 		fmax = 0.2f;
 		ang = 0;
 		entrar = false;
-		atacar = 0;
 		
 		img = app.loadImage("ovni.png");
 	}
@@ -77,7 +75,6 @@ public class Ovni extends Personaje{
 				mover();
 				actualizar();
 				
-				atacar++;
 				ang += app.PI/50;
 				sleep(16);
 			} catch (InterruptedException e) {
@@ -132,7 +129,6 @@ public class Ovni extends Personaje{
 		synchronized(m.getOvnis()) {
 		if(app.dist(m.getJ().getPos().x, m.getJ().getPos().y, pos.x, pos.y) < 28 && vivo) {
 			m.getJ().setEstrella(m.getJ().getEstrellas()+2);
-			m.getJ().setContOvnis(m.getJ().getContOvnis()+1);
 			vivo = false;
 			m.getOvnis().remove(this);
 			}
@@ -141,7 +137,7 @@ public class Ovni extends Personaje{
 	
 	public void perseguirJugador() {
 		perseguir(m.getJ().getPos());
-		if(app.dist(m.getJ().getPos().x, m.getJ().getPos().y, pos.x, pos.y) < 28 && atacar > 90) {
+		if(app.dist(m.getJ().getPos().x, m.getJ().getPos().y, pos.x, pos.y) < 28) {
 			if(m.getJ().getEstrellas() > 0) {
 				if(m.getJ().getEstrellas()-5 >= 0) {
 					m.getJ().setEstrella(m.getJ().getEstrellas()-5);					
@@ -152,7 +148,6 @@ public class Ovni extends Personaje{
 				m.setMatar(true);
 			}
 			estrellas += 2;
-			atacar = 0;
 		}
 	}
 	

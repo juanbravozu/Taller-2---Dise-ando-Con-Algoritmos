@@ -12,7 +12,6 @@ public class Jugador extends Personaje{
 	private LinkedList<PVector> historia;
 	private Cometa cometa;
 	private Agujero agujero;
-	private int contOvnis;
 	
 	public Jugador(PApplet app) {
 		super(app);
@@ -22,7 +21,6 @@ public class Jugador extends Personaje{
 		img = app.loadImage("nave.png");
 		velmax = 7f;
 		fmax = 0.3f;
-		contOvnis = 0;
 	}
 
 	public void run() {
@@ -122,13 +120,4 @@ public class Jugador extends Personaje{
 	public void setEstrella(int e) {
 		estrellas = e;
 	}
-
-	public int getContOvnis() {
-		return contOvnis;
-	}
-
-	public void setContOvnis(int contOvnis) {
-		this.contOvnis = contOvnis;
-	}
-	
 }
