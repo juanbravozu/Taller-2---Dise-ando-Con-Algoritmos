@@ -19,13 +19,15 @@ public class Logica {
 	 * Pantalla 3 - Inst2
 	 * Pantalla 4 - Inst3
 	 * Pantalla 5 - Inst4
+	 * Pantalla 6 - Ganaste
+	 * Pantalla 7 - Perdiste
 	 */
 	
 	public Logica(PApplet app) {
 		this.app = app;
 		m = null;
 		pantalla = 0;
-		menus = new PImage[12];
+		menus = new PImage[16];
 		for(int i = 0; i < menus.length; i++) {
 			menus[i] = app.loadImage("menu" + i + ".png");
 		}
@@ -51,14 +53,30 @@ public class Logica {
 				soundMenu.stop();
 			}
 			if(m.terminarJuego()) {
-				pantalla = 0;
+				if(m.getGanar()) {
+					pantalla = 6;
+				}else {
+					pantalla = 7;
+				}
+				m.pararMus();
+				m = null;
+				soundMenu.loop();
+			}
+			if(m != null && m.getMatar()) {
+				m.pararMus();
+				pantalla = 7;
 				m = null;
 				soundMenu.loop();
 			}
 			break;
 			
-		case 2:
+		case 6:
+			ganaste();
+			break;
 			
+		case 7:
+			perdiste();
+			break;
 		}
 		interInstru();
 		app.stroke(255,100);
@@ -124,6 +142,30 @@ public class Logica {
 		}
 	}
 	
+	public void perdiste(){
+		int x = app.mouseX;
+		int y = app.mouseY;
+		float posX = app.width/2;
+		float posY = app.height/2;
+		if(x > posX - 105.41f && x < posX + 108.13f && y > posY + 219.98f && y < posY + 271.36f) {
+			app.image(menus[13], posX, posY);
+		}else {
+			app.image(menus[12], posX, posY);
+		}
+	}
+	
+	public void ganaste() {
+		int x = app.mouseX;
+		int y = app.mouseY;
+		float posX = app.width/2;
+		float posY = app.height/2;
+		if(x > posX - 105.41f && x < posX + 108.13f && y > posY + 219.98f && y < posY + 271.36f) {
+			app.image(menus[15], posX, posY);
+		}else {
+			app.image(menus[14], posX, posY);
+		}
+	}
+	
 	public void click() {
 		int x = app.mouseX;
 		int y = app.mouseY;
@@ -138,7 +180,6 @@ public class Logica {
 			} else if(x > posX - 56.32f && x < posX + 56.55f && y > posY + 236.77f && y < posY + 283.98f) {
 				app.exit();
 			}
-			
 			break;
 		
 		case 1:
@@ -148,7 +189,7 @@ public class Logica {
 			if(x > posX - 105.41f && x < posX + 108.13f && y > posY + 219.98f && y < posY + 271.36f) {
 				pantalla = 3;
 			}
-				break;
+			break;
 			
 		case 3:
 			if(x > posX - 105.41f && x < posX + 108.13f && y > posY + 219.98f && y < posY + 271.36f) {
@@ -160,12 +201,23 @@ public class Logica {
 			if(x > posX - 105.41f && x < posX + 108.13f && y > posY + 219.98f && y < posY + 271.36f) {
 				pantalla = 5;
 			}
-			
 			break;
 			
 		case 5:			
 			if(x > posX - 69.16f && x < posX + 70.97f && y > posY + 218.9f && y < posY + 272.66f) {
 				pantalla = 1;
+			}
+			break;
+			
+		case 6:
+			if(x > posX - 105.41f && x < posX + 108.13f && y > posY + 219.98f && y < posY + 271.36f) {
+				pantalla = 0;
+			}
+			break;
+			
+		case 7:
+			if(x > posX - 105.41f && x < posX + 108.13f && y > posY + 219.98f && y < posY + 271.36f) {
+				pantalla = 0;
 			}
 			break;
 		}

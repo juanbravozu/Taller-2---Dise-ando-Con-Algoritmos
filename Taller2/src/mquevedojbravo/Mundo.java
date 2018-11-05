@@ -22,12 +22,16 @@ public class Mundo extends Thread {
 	private PFont mali;
 	private SoundFile mus;
 	private boolean vivo;
+	private boolean ganar;
+	private boolean matar;
 	
 	public Mundo(PApplet app) {
 		this.app = app;
 		j = new Jugador(app);
 		j.start();
 		vivo = true;
+		ganar = false;
+		matar = false;
 		ovnis = new LinkedList<Ovni>();
 		Ovni o = new Ovni(app, this);
 		o.start();
@@ -40,7 +44,7 @@ public class Mundo extends Thread {
 		mali = app.loadFont("maliB_28.vlw");
 		mus = new SoundFile(app, "musicaJuego.wav");
 		mus.play();
-		contadorTiempo = app.millis()+59999;
+		contadorTiempo = app.millis()+90000;
 	}
 	
 	public void pintar() {
@@ -66,10 +70,13 @@ public class Mundo extends Thread {
 		app.textFont(mali);
 		app.fill(255);
 		app.text(j.getEstrellas(), 1111.64f, 620.7f);
-		if((int)(contadorTiempo-app.millis())/1000 > 9) {
-			app.text("0:"+(int)(contadorTiempo-app.millis())/1000, 1061.64f, 590);
+		int seg = (contadorTiempo - app.millis())/1000;
+		int min = seg/60;
+		seg -= min*60;
+		if(seg > 9) {
+			app.text(min + ":" + seg, 1061.64f, 590);
 		} else {
-			app.text("0:0"+(int)(contadorTiempo-app.millis())/1000, 1061.64f, 590);
+			app.text(min + ":0" + seg, 1061.64f, 590);
 		}
 		
 		
@@ -115,10 +122,32 @@ public class Mundo extends Thread {
 	public boolean terminarJuego() {
 		if(contadorTiempo-app.millis() <= 0) {
 			mus.stop();
+			Ovni o = null;
+			Iterator<Ovni> it = ovnis.iterator();
+			if(it.hasNext()) {
+				o = it.next();
+			}
+			while(it.hasNext()) {
+				Ovni obj = it.next();
+				
+				if(o.getEstrellas()-obj.getEstrellas() <= 0) {
+					o = obj;
+				}
+			}
+			if(o.getEstrellas() - j.getEstrellas() <= 0) {
+				ganar = true;
+			}
+			
 			return true;
 		} else {
 			return false;
 		}
+	}
+	
+	public void pararMus() {
+		if(mus.isPlaying()) {
+			mus.stop();
+		}		
 	}
 	
 	public LinkedList<Recogible> getObjetos() {
@@ -132,4 +161,16 @@ public class Mundo extends Thread {
 	public Jugador getJ() {
 		return j;
 	}
+	
+	public boolean getGanar() {
+		return ganar;
+	}
+	public boolean getMatar() {
+		return matar;
+	}
+	
+	public void setMatar(boolean b) {
+		 matar = b;
+	}
+	
 }
