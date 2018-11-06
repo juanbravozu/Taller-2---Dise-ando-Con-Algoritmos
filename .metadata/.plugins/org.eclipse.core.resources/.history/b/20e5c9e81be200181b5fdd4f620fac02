@@ -114,18 +114,7 @@ public class Ovni extends Personaje{
 			if(o != null) {
 				perseguir(o.getPos());
 				if(app.dist(pos.x, pos.y, o.getPos().x, o.getPos().y) < 25) {
-					if(o instanceof Estrella) {
-						estrellas++;
-					} else if(o instanceof Agujero) {
-						if(m.getJ().getEstrellas() - 15 >= 0 ) {
-							m.getJ().setEstrella(m.getJ().getEstrellas()-15);
-						} else {
-							m.getJ().setEstrella(0);
-						}
-					} else if(o instanceof Cometa) {
-						
-					}
-					
+					estrellas++;
 					m.getObjetos().remove(o);
 				}
 			}
@@ -133,10 +122,7 @@ public class Ovni extends Personaje{
 	}
 	
 	public void huir(PVector obj) {
-		PVector objetivo = new PVector();
-		objetivo.set(obj);
-		objetivo.set(-objetivo.x, -objetivo.y);
-		PVector deseado = PVector.add(objetivo, pos);
+		PVector deseado = PVector.add(obj, pos);
 		deseado.normalize();
 		deseado.mult(velmax);
 		PVector direccion = PVector.sub(deseado, vel);

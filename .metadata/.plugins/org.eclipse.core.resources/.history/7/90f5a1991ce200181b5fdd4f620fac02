@@ -133,10 +133,9 @@ public class Ovni extends Personaje{
 	}
 	
 	public void huir(PVector obj) {
-		PVector objetivo = new PVector();
-		objetivo.set(obj);
-		objetivo.set(-objetivo.x, -objetivo.y);
-		PVector deseado = PVector.add(objetivo, pos);
+		PVector objetivo = obj;
+		objetivo.set(-obj.x, -obj.y);
+		PVector deseado = PVector.sub(objetivo, pos);
 		deseado.normalize();
 		deseado.mult(velmax);
 		PVector direccion = PVector.sub(deseado, vel);
