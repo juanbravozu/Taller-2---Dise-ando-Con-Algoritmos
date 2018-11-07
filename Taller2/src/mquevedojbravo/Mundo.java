@@ -103,7 +103,9 @@ public class Mundo extends Thread {
 					if(ran == 0) {
 						objetos.add(new Agujero(app));
 					} else if(ran == 1) {
-						
+						Cometa c = new Cometa(app);
+						c.getH().start();
+						objetos.add(c);
 					}else {
 						objetos.add(new Estrella(app));
 					}

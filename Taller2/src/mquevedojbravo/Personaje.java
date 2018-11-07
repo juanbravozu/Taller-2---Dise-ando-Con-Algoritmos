@@ -15,7 +15,6 @@ public abstract class Personaje extends Thread {
 	protected float velmax;
 	protected float ang;
 	protected int estrellas;
-	protected int tam;
 	protected boolean vivo;
 	protected PImage img;
 	
@@ -38,9 +37,6 @@ public abstract class Personaje extends Thread {
 		ac.mult(0);
 	}
 	
-	public void aplicarFuerza(PVector f) {
-		ac.add(f);
-	}
 	
 	public void perseguir(PVector obj) {
 		PVector deseado = PVector.sub(obj, pos);
@@ -48,7 +44,7 @@ public abstract class Personaje extends Thread {
 		deseado.mult(velmax);
 		PVector direccion = PVector.sub(deseado, vel);
 		direccion.limit(fmax);
-		aplicarFuerza(direccion);
+		ac.add(direccion);
 	}
 	
 	public void setVivo(boolean vivo) {

@@ -93,7 +93,7 @@ public class Jugador extends Personaje{
 		}
 		PVector direccion = PVector.sub(deseado, vel);
 		direccion.limit(fmax);
-		aplicarFuerza(direccion);
+		ac.add(direccion);
 	}
 	
 	public boolean validarObj(Recogible o) {

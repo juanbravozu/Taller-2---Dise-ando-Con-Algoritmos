@@ -141,7 +141,7 @@ public class Ovni extends Personaje{
 		deseado.mult(velmax);
 		PVector direccion = PVector.sub(deseado, vel);
 		direccion.limit(fmax);
-		aplicarFuerza(direccion);
+		ac.add(direccion);
 		
 		synchronized(m.getOvnis()) {
 		if(app.dist(m.getJ().getPos().x, m.getJ().getPos().y, pos.x, pos.y) < 45 && vivo) {
