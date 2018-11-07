@@ -250,6 +250,9 @@ public class Logica {
 	}
 	
 	public void tecla() {
-		m.tecla();
+		if(m != null) {
+			m.tecla();
+		}
+		
 	}
 }

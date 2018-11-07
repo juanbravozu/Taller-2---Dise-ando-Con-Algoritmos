@@ -171,6 +171,10 @@ public class Mundo extends Thread {
 			}
 			ovnis.clear();
 		}
+		
+		if(app.key == '2') {
+			j.usarCometa();
+		}
 	}
 	
 	public LinkedList<Recogible> getObjetos() {

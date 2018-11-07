@@ -108,6 +108,10 @@ public class Jugador extends Personaje{
 				agujeros++;
 				agujerosTotal++;
 				return true;
+			} else if(o instanceof Cometa) {
+				cometaMas = true;
+				cometa++;
+				return true;
 			} else {
 				return false;
 			}
@@ -118,7 +122,9 @@ public class Jugador extends Personaje{
 	
 	public void usarCometa() {
 		if(estrellas >= 5) {
-			
+				if(cometaMas && cometa >= 1) {
+					velmax = 10f;
+				}
 			estrellas -= 5;
 		}
 	}
@@ -180,4 +186,15 @@ public class Jugador extends Personaje{
 	public void setEstrellasTotal(int e) {
 		estrellasTotal = e;
 	}
+
+
+	public void setCometaMenos(boolean cometaMenos) {
+		this.cometaMenos = cometaMenos;
+	}
+
+	public void setCometaMas(boolean cometaMas) {
+		this.cometaMas = cometaMas;
+	}
+	
+	
 }
