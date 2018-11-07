@@ -16,7 +16,6 @@ public class Ovni extends Personaje{
 	private float ang;
 	private PFont mali;
 	private boolean entrar;
-	private boolean huir;
 	private int atacar;
 	
 	public Ovni(PApplet app, Mundo m) {
@@ -49,7 +48,6 @@ public class Ovni extends Personaje{
 		fmax = 0.2f;
 		ang = 0;
 		entrar = false;
-		huir = false;
 		atacar = 0;
 		
 		img = app.loadImage("ovni.png");
@@ -65,9 +63,8 @@ public class Ovni extends Personaje{
 				} else if(estrellas < m.getJ().getEstrellas()){					
 					if(app.dist(pos.x, pos.y, m.getJ().getPos().x, m.getJ().getPos().y) < 125) {
 						velmax = 10;
-						fmax = 0.4f;
+						fmax = 0.5f;
 						huir(m.getJ().getPos());
-						huir = true;
 					} else {
 						velmax = 5;
 						fmax = 0.2f;
@@ -128,6 +125,7 @@ public class Ovni extends Personaje{
 					} else if(o instanceof Cometa) {
 						
 					}
+					
 					m.getObjetos().remove(o);
 				}
 			}
@@ -143,10 +141,10 @@ public class Ovni extends Personaje{
 		deseado.mult(velmax);
 		PVector direccion = PVector.sub(deseado, vel);
 		direccion.limit(fmax);
-		ac.add(direccion);
+		aplicarFuerza(direccion);
 		
 		synchronized(m.getOvnis()) {
-		if(app.dist(m.getJ().getPos().x, m.getJ().getPos().y, pos.x, pos.y) < 45) {
+		if(app.dist(m.getJ().getPos().x, m.getJ().getPos().y, pos.x, pos.y) < 45 && vivo) {
 			m.getJ().setEstrella(m.getJ().getEstrellas()+2);
 			m.getJ().setEstrellasTotal(m.getJ().getEstrellasTotal()+2);
 			m.getJ().setContOvnis(m.getJ().getContOvnis()+1);
@@ -177,7 +175,7 @@ public class Ovni extends Personaje{
 		if(pos.x > 60 && pos.x < 1140 && pos.y > 60 && pos.y < 615) {
 			entrar = true;
 		}
-		if(entrar && !huir) {
+		if(entrar) {
 			if(pos.x < 50 || pos.x > 1150) {
 				PVector newvel = new PVector(-vel.x, vel.y);
 				vel.set(newvel);
@@ -187,7 +185,6 @@ public class Ovni extends Personaje{
 				PVector newvel = new PVector(vel.x, -vel.y);
 				vel.set(newvel);
 			}
-			huir = false;
 		}
 	}
 	

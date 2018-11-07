@@ -15,8 +15,6 @@ public class Jugador extends Personaje{
 	private int agujerosTotal;
 	private int estrellasTotal;
 	private int contOvnis;
-	private boolean cometaMas;
-	private boolean cometaMenos;
 	
 	public Jugador(PApplet app) {
 		super(app);
@@ -95,7 +93,7 @@ public class Jugador extends Personaje{
 		}
 		PVector direccion = PVector.sub(deseado, vel);
 		direccion.limit(fmax);
-		ac.add(direccion);
+		aplicarFuerza(direccion);
 	}
 	
 	public boolean validarObj(Recogible o) {
