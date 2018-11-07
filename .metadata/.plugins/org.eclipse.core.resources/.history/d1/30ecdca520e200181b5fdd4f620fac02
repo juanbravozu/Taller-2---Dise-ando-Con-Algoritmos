@@ -65,10 +65,11 @@ public class Ovni extends Personaje{
 				} else if(estrellas < m.getJ().getEstrellas()){					
 					if(app.dist(pos.x, pos.y, m.getJ().getPos().x, m.getJ().getPos().y) < 125) {
 						velmax = 10;
-						fmax = 0.4f;
+						fmax = 0.5f;
 						huir(m.getJ().getPos());
 						huir = true;
 					} else {
+						huir = false;
 						velmax = 5;
 						fmax = 0.2f;
 						buscarObj();
@@ -146,7 +147,7 @@ public class Ovni extends Personaje{
 		aplicarFuerza(direccion);
 		
 		synchronized(m.getOvnis()) {
-		if(app.dist(m.getJ().getPos().x, m.getJ().getPos().y, pos.x, pos.y) < 45) {
+		if(app.dist(m.getJ().getPos().x, m.getJ().getPos().y, pos.x, pos.y) < 45 && vivo) {
 			m.getJ().setEstrella(m.getJ().getEstrellas()+2);
 			m.getJ().setEstrellasTotal(m.getJ().getEstrellasTotal()+2);
 			m.getJ().setContOvnis(m.getJ().getContOvnis()+1);
@@ -187,7 +188,6 @@ public class Ovni extends Personaje{
 				PVector newvel = new PVector(vel.x, -vel.y);
 				vel.set(newvel);
 			}
-			huir = false;
 		}
 	}
 	

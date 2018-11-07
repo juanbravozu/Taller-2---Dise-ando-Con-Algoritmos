@@ -15,8 +15,6 @@ public class Jugador extends Personaje{
 	private int agujerosTotal;
 	private int estrellasTotal;
 	private int contOvnis;
-	private boolean cometaMas;
-	private boolean cometaMenos;
 	
 	public Jugador(PApplet app) {
 		super(app);
