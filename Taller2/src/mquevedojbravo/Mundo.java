@@ -181,6 +181,8 @@ public class Mundo extends Thread {
 		}
 	}
 	
+	//Referencias a las variables y objetos a partir de aquí
+	
 	public LinkedList<Recogible> getObjetos() {
 		return objetos;
 	}

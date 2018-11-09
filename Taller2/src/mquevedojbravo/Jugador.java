@@ -165,6 +165,8 @@ public class Jugador extends Personaje{
 		}
 	}
 	
+	//Referencias a las variables y objetos desde aquí
+	
 	public PVector getPos() {
 		return pos;
 	}

@@ -192,6 +192,8 @@ public class Ovni extends Personaje{
 		}
 	}
 	
+	//Referencias a variables
+	
 	public int getEstrellas() {
 		return estrellas;
 	}
