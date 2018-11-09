@@ -192,7 +192,7 @@ public class Logica {
 		}
 	}
 	
-	public void click() {
+	public void clic() {
 		int x = app.mouseX;
 		int y = app.mouseY;
 		float posX = app.width/2;
