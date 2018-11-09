@@ -69,7 +69,7 @@ public class Logica {
 				estrellas = m.getJ().getEstrellasTotal();
 				contOvnis = m.getJ().getContOvnis();
 				agujeros = m.getJ().getAgujerosTotal();
-				cometas = m.getJ().getCometa();
+				cometas = m.getJ().getCometasTotal();
 				m = null;
 				soundMenu.loop();
 			}
@@ -79,7 +79,7 @@ public class Logica {
 				estrellas = m.getJ().getEstrellasTotal();
 				contOvnis = m.getJ().getContOvnis();
 				agujeros = m.getJ().getAgujerosTotal();
-				cometas = m.getJ().getCometa();
+				cometas = m.getJ().getCometasTotal();
 				m = null;
 				soundMenu.loop();
 			}

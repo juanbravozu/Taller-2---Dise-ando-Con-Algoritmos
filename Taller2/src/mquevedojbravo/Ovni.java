@@ -127,6 +127,7 @@ public class Ovni extends Personaje{
 						}
 					} else if(o instanceof Cometa) {
 						m.getJ().setCometaMenos(true);
+						m.getJ().setContEfecto(app.millis()+5000);
 					}
 					m.getObjetos().remove(o);
 				}

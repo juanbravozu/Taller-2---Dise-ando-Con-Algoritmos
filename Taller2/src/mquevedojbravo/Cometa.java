@@ -16,6 +16,7 @@ public class Cometa extends Recogible implements Runnable {
 	private int vmax;
 	private float fmax;
 	private PVector vel, ac;
+	private boolean borrar;
 	
 	public Cometa(PApplet app) {
 		super(app);
@@ -95,6 +96,16 @@ public class Cometa extends Recogible implements Runnable {
 		PVector direccion = PVector.sub(deseado, vel);
 		direccion.limit(fmax);
 		ac.add(direccion);
+	}
+	
+	public boolean borrar() {
+		if(ran == 1 && pos.x > app.width+20) {
+			return true;
+		} else if(ran == 0 && pos.x < -20) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
 	public Thread getH() {

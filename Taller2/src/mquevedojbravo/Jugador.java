@@ -14,7 +14,9 @@ public class Jugador extends Personaje{
 	private int agujeros;
 	private int agujerosTotal;
 	private int estrellasTotal;
+	private int cometasTotal;
 	private int contOvnis;
+	private int contEfecto;
 	private boolean cometaMas;
 	private boolean cometaMenos;
 	
@@ -23,6 +25,8 @@ public class Jugador extends Personaje{
 		pos = new PVector(app.width/2, app.height/2);
 		historia = new LinkedList<PVector>();
 		historia.add(pos);
+		cometaMas = false;
+		cometaMenos = false;
 		img = app.loadImage("nave.png");
 		velmax = 7f;
 		fmax = 0.3f;
@@ -30,7 +34,9 @@ public class Jugador extends Personaje{
 		agujeros = 0;
 		agujerosTotal = 0;
 		estrellasTotal = 0;
+		cometasTotal = 0;
 		cometa = 0;
+		contEfecto = 0;	
 	}
 
 	public void run() {
@@ -38,6 +44,7 @@ public class Jugador extends Personaje{
 			actualizar();
 			PVector obj = new PVector(app.mouseX, app.mouseY);
 			perseguir(obj);
+			efectoCometa();
 			ang = vel.heading() + app.PI/2;
 			try {					
 				sleep(16);
@@ -109,8 +116,8 @@ public class Jugador extends Personaje{
 				agujerosTotal++;
 				return true;
 			} else if(o instanceof Cometa) {
-				cometaMas = true;
 				cometa++;
+				cometasTotal++;
 				return true;
 			} else {
 				return false;
@@ -121,11 +128,11 @@ public class Jugador extends Personaje{
 	}
 	
 	public void usarCometa() {
-		if(estrellas >= 5) {
-				if(cometaMas && cometa >= 1) {
-					velmax = 10f;
-				}
+		if(estrellas >= 5 && cometa > 0) {
+			cometaMas = true;
 			estrellas -= 5;
+			contEfecto = app.millis() + 5000;
+			cometa--;
 		}
 	}
 	
@@ -139,8 +146,39 @@ public class Jugador extends Personaje{
 		}
 	}
 	
+	public void efectoCometa() {
+		if(!cometaMenos && !cometaMas) {
+			velmax = 7f;
+			fmax = 0.3f;
+		}
+		if(cometaMas) {
+			velmax = 10;
+			fmax = 0.4f;
+		} else if(cometaMenos) {
+			velmax = 4.5f;
+			fmax = 0.2f;
+		}
+		if(/*(cometaMas && cometaMenos) ||*/ contEfecto - app.millis() < 0) {
+			System.out.println("funciona");
+			cometaMas = false;
+			cometaMenos = false;
+		}
+	}
+	
 	public PVector getPos() {
 		return pos;
+	}
+	
+	public int getCometasTotal() {
+		return cometasTotal;
+	}
+	
+	public void setContEfecto(int e) {
+		contEfecto = e;
+	}
+	
+	public void setVel(float vel) {
+		velmax = vel;
 	}
 	
 	public int getEstrellas() {

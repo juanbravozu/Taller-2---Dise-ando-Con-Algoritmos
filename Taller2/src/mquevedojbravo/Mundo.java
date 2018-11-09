@@ -118,6 +118,10 @@ public class Mundo extends Thread {
 					if(j.validarObj(o)) {
 						it.remove();
 					}
+					
+					if(o instanceof Cometa && ((Cometa)o).borrar()) {
+						it.remove();
+					}
 				}
 			}
 					
@@ -165,14 +169,14 @@ public class Mundo extends Thread {
 	}
 	
 	public void tecla() {
-		if(app.key == '1' && j.usarAgujero()) {
+		if(app.key == '2' && j.usarAgujero()) {
 			for(Ovni o : ovnis) {
 				o.setVivo(false);
 			}
 			ovnis.clear();
 		}
 		
-		if(app.key == '2') {
+		if(app.key == '1') {
 			j.usarCometa();
 		}
 	}
