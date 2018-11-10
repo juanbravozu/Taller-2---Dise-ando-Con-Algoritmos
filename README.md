@@ -34,7 +34,7 @@ Descripción general de clases y métodos utilizados en el código
 - #### Recogible
   Clase padre encargada de los parámetros base de las clases hijas. Abstracta.
   * **Métodos**
-    * **pintar(): void** Clase abstracta que pinta las imágenes y procesos de las hijas.
+    * **pintar(): void** Método abstracto que pinta las imágenes y procesos de las hijas.
     * **getPos(): PVector** Devuelve la variable pos (posición) de la clase.
 - #### Estrella
   Clase hija. Extiende de Recogible. Los personajes pueden validar este elemento.
@@ -53,3 +53,31 @@ Descripción general de clases y métodos utilizados en el código
     * **perseguir(PVector): void** Recibe un objetivo o punto de llegada del cometa. Añade fuerzas, velocidades y limita su movimiento.
     * **borrar(): boolean** Devuelve _true_ si el cometa se ha salido de la zona de juego y _false_ en caso contrario.
     * **getH(): Thread** Devuelve la variable hilo encargada de ejecutarse en la clase _Mundo_.
+- #### Personaje
+  Clase padre encargada de los parámetros base de las clases hijas. Extiende de Thread y es astracta.
+  * **Métodos**
+    * **pintar(): void** Método abstracto que pinta las imágenes correspondientes al objeto.
+    * **run(): void** Ejecuta los procesos que se realicen.
+    * **actualizar(): void** Cambia la velocidad y la posición del objeto.
+    * **perseguir(PVector): void** Recibe un vector que representa la posición deseada del objeto, genera una fuerza que cambiará la velocidad dependiendo de la posición actual respecto a la deseada.
+ - #### Jugador
+  Clase hija de Personaje, representa el objeto que el jugador controla.
+  * **Métodos**
+    * **run(): void** Ejecuta los procesos y métodos a realizar.
+    * **pintar(): void** Pinta la nave y la estela.
+    * **actualizar(): void** Cambia la velocidad y posición, y actualiza la estela dependiendo de la nueva posición del usuario.
+    * **perseguir(PVector): void** Genera la fuerza del jugador hacia la posición del mouse, y detiene el movimiento si ya se llegó hasta el mouse.
+    * **validarObj(Recogible): boolean** Recoge los diferentes objetos y modifica los contadores que los representan.
+    * **usarCometa(): void** Resta las estrellas necesarias y cambia a true un booleano que representa el buff de velocidad.
+    * **usarAgujeto(): boolean** Resta las estrellas necesarias y retorna true cuando se utiliza.
+    * **efectoCometa(): void** Dependiendo de los booleanos cometaMas y cometaMenos, aumentando o disminuyendo la velocidad del jugador.
+    * **getPos(): PVector** Retorna el vector pos, que representa la posición del jugador.
+ - #### Ovni
+  Clase hija de Personaje, representa el objeto que el jugador controla.
+  * **Métodos**
+    * **run(): void** Ejecuta los procesos y métodos a realizar, dependiendo de su número de estrellas respecto a las del jugador.
+    * **pintar(): void** Pinta el ovni.
+    * **buscarObj(): void** Busca el recogible más cercano y se mueve hacia el, realiza el efecto del recogible, o suma estrellas.
+    * **huir(): void** Se mueve en dirección contraria a la del jugador a una velocidad más alta de lo normal, valida si el jugador entra en contacto con el ovni, en caso de que si, elimina el ovni y suma estrellas al jugador.
+    * **perseguirJugador(): void** Se mueve hacia el jugador, y si entra en contacto con este, gana 2 estrellas y le quita 5 al jugador.
+    * **mover(): void** Evita que el ovni salga de la pantalla siempre y cuando no esté huyendo y ya haya entrado al menos una vez a la pantalla.
