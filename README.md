@@ -54,7 +54,7 @@ Descripción general de clases y métodos utilizados en el código
     * **borrar(): boolean** Devuelve _true_ si el cometa se ha salido de la zona de juego y _false_ en caso contrario.
     * **getH(): Thread** Devuelve la variable hilo encargada de ejecutarse en la clase _Mundo_.
 - #### Personaje
-  Clase padre encargada de los parámetros base de las clases hijas. Extiende de Thread y es astracta.
+  Clase padre encargada de los parámetros base de las clases hijas. Extiende de Thread y es abstracta.
   * **Métodos**
     * **pintar(): void** Método abstracto que pinta las imágenes correspondientes al objeto.
     * **run(): void** Ejecuta los procesos que se realicen.
@@ -66,14 +66,14 @@ Descripción general de clases y métodos utilizados en el código
     * **run(): void** Ejecuta los procesos y métodos a realizar.
     * **pintar(): void** Pinta la nave y la estela.
     * **actualizar(): void** Cambia la velocidad y posición, y actualiza la estela dependiendo de la nueva posición del usuario.
-    * **perseguir(PVector): void** Genera la fuerza del jugador hacia la posición del mouse, y detiene el movimiento si ya se llegó hasta el mouse.
+    * **perseguir(PVector): void** Genera la fuerza del jugador hacia la posición del mouse, y detiene el movimiento si ya se llegó hasta él.
     * **validarObj(Recogible): boolean** Recoge los diferentes objetos y modifica los contadores que los representan.
-    * **usarCometa(): void** Resta las estrellas necesarias y cambia a true un booleano que representa el buff de velocidad.
-    * **usarAgujeto(): boolean** Resta las estrellas necesarias y retorna true cuando se utiliza.
-    * **efectoCometa(): void** Dependiendo de los booleanos cometaMas y cometaMenos, aumentando o disminuyendo la velocidad del jugador.
+    * **usarCometa(): void** Resta las estrellas necesarias y cambia a _true_ un booleano que representa el buff de velocidad.
+    * **usarAgujeto(): boolean** Resta las estrellas necesarias y retorna _true_ cuando se utiliza.
+    * **efectoCometa(): void** Dependiendo de los booleanos _cometaMas y cometaMenos_, aumentando o disminuyendo la velocidad del jugador.
     * **getPos(): PVector** Retorna el vector pos, que representa la posición del jugador.
  - #### Ovni
-  Clase hija de Personaje, representa el objeto que el jugador controla.
+  Clase hija de Personaje, representa los enemigos del _Jugador_ controlado por el usuario.
   * **Métodos**
     * **run(): void** Ejecuta los procesos y métodos a realizar, dependiendo de su número de estrellas respecto a las del jugador.
     * **pintar(): void** Pinta el ovni.
