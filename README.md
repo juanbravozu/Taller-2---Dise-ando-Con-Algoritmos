@@ -2,6 +2,7 @@
 
 ## Taller 2 Diseñando Con Algoritmos
 Taller 2 para curso Diseñando con Algoritmos de Diseño de Medios Interactivos - Universidad ICESI
+
 Behance: https://www.behance.net/gallery/72793923/Taller-2-Disenando-con-Algoritmos
 
 Descripción general de clases y métodos utilizados en el código
